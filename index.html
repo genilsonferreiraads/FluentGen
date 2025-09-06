@@ -142,9 +142,16 @@
         }
         .input-group {
             display: flex;
-            flex-direction: row; /* Padrão desktop */
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: 0;
             margin-bottom: 1rem;
+            position: relative;
+            background: linear-gradient(145deg, rgba(13, 17, 23, 0.8) 0%, rgba(22, 27, 34, 0.6) 100%);
+            border: 2px solid #30363d;
+            border-radius: 1rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2; /* Garante que o grupo de input e o menu fiquem acima da infoBox */
         }
 
         .input-container {
@@ -152,35 +159,84 @@
             flex: 1;
         }
 
+        /* Painel de controle integrado */
+        .control-panel {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.25rem 1rem;
+            background: transparent;
+            border: none;
+            border-radius: 0 0 1rem 1rem;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            line-height: 1;
+            font-size: 1rem;
+        }
+
+        .left-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Efeito de foco no painel quando o input está ativo */
+        .input-group:focus-within {
+            border-color: #58a6ff;
+            box-shadow: 
+                0 0 20px rgba(88, 166, 255, 0.4),
+                0 0 40px rgba(88, 166, 255, 0.2);
+        }
+
         .input-field {
             width: 100%;
-            padding: 1rem 4rem 3rem 4rem;
-            background: linear-gradient(145deg, rgba(13, 17, 23, 0.8) 0%, rgba(22, 27, 34, 0.6) 100%);
-            border: 2px solid #30363d;
-            border-radius: 1rem;
+            padding: 1rem 1rem 0.5rem 1rem;
+            background: transparent;
+            border: none;
             color: #c9d1d9;
             outline: none;
             font-size: 1rem;
             position: relative;
-            min-height: 4rem;
+            min-height: 3.5rem;
+            max-height: 12rem;
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-style: normal;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(5px);
-            box-shadow: 
-                inset 0 2px 4px rgba(0, 0, 0, 0.3),
-                0 0 0 0 rgba(88, 166, 255, 0.4);
-            animation: inputPulse 3s ease-in-out infinite;
+            resize: none;
+            overflow-y: auto;
+            line-height: 1.5;
+        }
+
+        /* Estilização moderna da barra de rolagem */
+        .input-field::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .input-field::-webkit-scrollbar-track {
+            background: rgba(48, 54, 61, 0.3);
+            border-radius: 3px;
+        }
+
+        .input-field::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #58a6ff 0%, #79c0ff 100%);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #79c0ff 0%, #58a6ff 100%);
+            box-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
+        }
+
+        /* Para Firefox */
+        .input-field {
+            scrollbar-width: thin;
+            scrollbar-color: #58a6ff rgba(48, 54, 61, 0.3);
         }
         
         .input-field:focus {
-            border-color: #58a6ff;
-            box-shadow: 
-                inset 0 2px 4px rgba(0, 0, 0, 0.3),
-                0 0 20px rgba(88, 166, 255, 0.4),
-                0 0 40px rgba(88, 166, 255, 0.2);
-            transform: translateY(-2px);
+            outline: none;
         }
         
         .input-field::placeholder {
@@ -211,9 +267,6 @@
         }
 
         .plus-icon {
-            position: absolute;
-            left: 1rem;
-            top: 1.2rem;
             background: #30363d;
             border: none;
             color: #c9d1d9;
@@ -228,6 +281,8 @@
             width: 2.5rem;
             height: 2.5rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* Restaura o tamanho de fonte para os ícones */
+            line-height: 1;
         }
         
         .plus-icon:hover {
@@ -239,13 +294,13 @@
 
         .floating-menu {
             position: absolute;
-            top: calc(100% - 2rem); /* Sobe muito mais para ficar praticamente por cima */
+            top: calc(100% + 0.5rem); /* Aparece abaixo do painel de controle */
             left: 0.75rem; /* Alinhado com o centro do ícone + */
             background-color: #21262d;
             border: 1px solid #30363d;
             border-radius: 0.75rem;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
+            z-index: 9999;
             padding: 0.5rem;
             width: auto;
             min-width: fit-content;
@@ -260,6 +315,12 @@
             pointer-events: auto;
         }
 
+        /* Quando o menu está aberto, reduz o z-index do indicador */
+        .floating-menu.show ~ .selected-mode-indicator,
+        .floating-menu.show + * .selected-mode-indicator {
+            z-index: 0 !important;
+        }
+        
         .menu-item {
             display: flex;
             align-items: center;
@@ -298,9 +359,6 @@
         }
 
         .generate-icon {
-            position: absolute;
-            right: 1rem;
-            top: 1.2rem;
             background: none;
             border: none;
             color: #79c0ff;
@@ -314,6 +372,8 @@
             justify-content: center;
             width: 3rem;
             height: 3rem;
+            /* Restaura o tamanho de fonte para os ícones */
+            line-height: 1;
         }
         
         .generate-icon:hover {
@@ -327,11 +387,8 @@
             transform: none;
         }
         
-        /* Selected Mode Indicator in Input */
+        /* Selected Mode Indicator no painel de controle */
         .selected-mode-indicator {
-            position: absolute;
-            bottom: 0.5rem;
-            left: 3.5rem; /* Mais à direita para não ficar embaixo do ícone + */
             background: rgba(88, 166, 255, 0.1);
             color: #58a6ff;
             border: 1px solid rgba(88, 166, 255, 0.2);
@@ -346,6 +403,9 @@
             opacity: 0;
             transform: translateY(0.5rem);
             transition: all 0.3s ease;
+            /* Restaura o tamanho de fonte para o indicador */
+            line-height: 1;
+            z-index: 1;
         }
         .selected-mode-indicator.show {
             opacity: 1;
@@ -385,51 +445,6 @@
             position: relative;
         }
         
-        @media (max-width: 768px) {
-            .phrase-card {
-                padding: 1rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .phrase-card-content h3 {
-                font-size: 1.1rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .phrase-card-content p {
-                font-size: 0.9rem;
-                margin-bottom: 1.25rem;
-                padding-bottom: 5rem; /* Aumentado ainda mais para dar mais espaço para os ícones */
-            }
-            
-            .phrase-actions {
-                flex-direction: row;
-                gap: 0.5rem;
-                align-items: center;
-                margin-bottom: 1rem; /* Adiciona margem inferior para separar dos ícones */
-            }
-            
-            .action-btn, .speed-btn {
-                flex: 1;
-                justify-content: center;
-                padding: 0.6rem 0.75rem;
-                font-size: 0.85rem;
-                min-width: 0; /* Permite que os botões encolham */
-            }
-            
-            .phrase-corner-actions {
-                bottom: 1rem;
-                right: 1rem;
-                gap: 0.5rem;
-                flex-direction: row; /* Garante que os ícones fiquem lado a lado */
-            }
-            
-            .icon-btn {
-                width: 2.5rem;
-                height: 2.5rem;
-                font-size: 1rem;
-            }
-        }
         
         @media (max-width: 480px) {
             .phrase-card {
@@ -445,11 +460,11 @@
             .phrase-card-content p {
                 font-size: 0.85rem;
                 margin-bottom: 1rem;
-                padding-bottom: 4.5rem; /* Aumentado ainda mais para dar mais espaço para os ícones */
+                padding-bottom: 1.25rem; /* Reduzido drasticamente para eliminar espaço excessivo */
             }
             
             .phrase-actions {
-                margin-bottom: 0.75rem; /* Adiciona margem inferior para separar dos ícones */
+                margin-bottom: 1.5rem; /* Aumenta margem inferior para criar espaço seguro */
                 gap: 0.375rem; /* Reduz o gap para telas menores */
             }
             
@@ -461,9 +476,70 @@
             }
             
             .phrase-corner-actions {
-                bottom: 0.875rem;
+                bottom: 0.25rem; /* Move para mais baixo */
                 right: 0.875rem;
                 gap: 0.375rem; /* Reduz o gap para telas menores */
+                z-index: 10; /* Garante que fiquem acima de outros elementos */
+            }
+            
+            /* Para telas entre 376px e 480px, mantém os ícones no canto */
+            @media (min-width: 376px) {
+                .phrase-corner-actions {
+                    position: absolute !important;
+                    bottom: 0.25rem !important;
+                    right: 0.875rem !important;
+                }
+            }
+            
+            .icon-btn {
+                width: 2.25rem;
+                height: 2.25rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Layout específico para telas pequenas e médias */
+        @media (max-width: 768px) {
+            .phrase-card {
+                padding: 0.75rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .phrase-card-content h3 {
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .phrase-card-content p {
+                font-size: 0.8rem;
+                margin-bottom: 0.75rem;
+                padding-bottom: 0.5rem; /* Mínimo espaço para o layout compacto */
+            }
+            
+            .phrase-actions {
+                flex-direction: row;
+                gap: 0.5rem;
+                margin-bottom: 0.5rem;
+                align-items: center;
+            }
+            
+            .action-btn, .speed-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+                flex: 1;
+                min-width: 0;
+            }
+            
+            /* Move os ícones para a mesma linha dos botões principais */
+            .phrase-corner-actions {
+                position: static !important;
+                display: flex !important;
+                gap: 0.5rem;
+                margin-top: 0.5rem;
+                justify-content: center;
+                z-index: 10;
+                bottom: auto !important;
+                right: auto !important;
             }
             
             .icon-btn {
@@ -733,6 +809,7 @@
             line-height: 1.5;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         .info-box::before {
             content: '';
@@ -858,30 +935,31 @@
             }
             
             .input-field {
-                padding: 1rem 3.5rem 2.5rem 3.5rem;
+                padding: 1rem 1rem 0.5rem 1rem;
                 font-size: 1rem;
                 min-height: 3.5rem;
+                max-height: 9.75rem;
+            }
+            
+            .control-panel {
+                padding: 0.3rem 0.75rem;
             }
             
             .plus-icon {
-                left: 0.75rem;
-                top: 1rem;
                 width: 2.25rem;
                 height: 2.25rem;
                 font-size: 1rem;
             }
             
             .generate-icon {
-                right: 0.75rem;
-                top: 1rem;
-                width: 2.5rem;
-                height: 2.5rem;
-                font-size: 1.5rem;
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.8rem;
             }
             
             .floating-menu {
                 left: 0.5rem;
-                top: calc(100% - 1.5rem);
+                top: calc(100% + 0.5rem); /* Aparece abaixo do painel para mobile */
                 width: calc(100% - 1rem);
                 max-width: none;
             }
@@ -892,8 +970,6 @@
             }
             
             .selected-mode-indicator {
-                left: 3.5rem;
-                bottom: 0.75rem;
                 font-size: 0.7rem;
                 padding: 0.2rem 0.4rem;
             }
@@ -916,36 +992,35 @@
             }
             
             .input-field {
-                padding: 0.875rem 3rem 2.25rem 3rem;
+                padding: 0.875rem 0.875rem 0.5rem 0.875rem;
                 font-size: 0.95rem;
                 min-height: 3rem;
+                max-height: 8.25rem;
+            }
+            
+            .control-panel {
+                padding: 0.25rem 0.5rem;
             }
             
             .plus-icon {
-                left: 0.5rem;
-                top: 0.875rem;
                 width: 2rem;
                 height: 2rem;
                 font-size: 0.9rem;
             }
             
             .generate-icon {
-                right: 0.5rem;
-                top: 0.875rem;
-                width: 2.25rem;
-                height: 2.25rem;
-                font-size: 1.3rem;
+                width: 2.75rem;
+                height: 2.75rem;
+                font-size: 1.6rem;
             }
             
             .floating-menu {
                 left: 0.25rem;
-                top: calc(100% - 1.25rem);
+                top: calc(100% + 0.5rem); /* Aparece abaixo do painel para telas pequenas */
                 width: calc(100% - 0.5rem);
             }
             
             .selected-mode-indicator {
-                left: 3rem;
-                bottom: 0.5rem;
                 font-size: 0.65rem;
                 padding: 0.15rem 0.3rem;
             }
@@ -988,17 +1063,7 @@
 
         <div class="input-group">
             <div class="input-container">
-                <input type="text" id="patternInput" class="input-field" placeholder="Digite sua consulta ou deixe a IA sugerir...">
-                <div id="selectedModeIndicator" class="selected-mode-indicator">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>Frases Padrão</span>
-                </div>
-                <button id="plusBtn" class="plus-icon">
-                    <i class="fas fa-plus"></i>
-                </button>
-                <button id="generateBtn" class="generate-icon">
-                    <i class="fa-solid fa-circle-arrow-up"></i>
-                </button>
+                <textarea id="patternInput" class="input-field" placeholder="Digite sua consulta ou deixe a IA sugerir..." rows="1"></textarea>
                 <div id="floatingMenu" class="floating-menu">
                     <div class="menu-item" data-mode="standard">
                         <i class="fas fa-comment-dots"></i>
@@ -1026,6 +1091,21 @@
                         <i class="fa-solid fa-check active-check" style="display: none;"></i>
                     </div>
                 </div>
+            </div>
+            <!-- Painel de controle separado -->
+            <div class="control-panel">
+                <div class="left-controls">
+                    <button id="plusBtn" class="plus-icon">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div id="selectedModeIndicator" class="selected-mode-indicator">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>Frases Padrão</span>
+                    </div>
+                </div>
+                <button id="generateBtn" class="generate-icon">
+                    <i class="fa-solid fa-circle-arrow-up"></i>
+                </button>
             </div>
         </div>
         
@@ -1266,7 +1346,17 @@
 
         // Função para alternar o menu flutuante
         function toggleFloatingMenu() {
-            floatingMenu.classList.toggle('show');
+            const isMenuOpen = floatingMenu.classList.contains('show');
+            
+            if (isMenuOpen) {
+                // Fechando o menu - restaura o z-index do indicador
+                floatingMenu.classList.remove('show');
+                selectedModeIndicator.style.zIndex = '1';
+            } else {
+                // Abrindo o menu - reduz o z-index do indicador
+                floatingMenu.classList.add('show');
+                selectedModeIndicator.style.zIndex = '0';
+            }
         }
 
         // Função de animação de digitação futurística
@@ -1291,6 +1381,7 @@
         function selectMode(mode) {
             selectedMode = mode;
             floatingMenu.classList.remove('show');
+            selectedModeIndicator.style.zIndex = '1'; // Restaura o z-index do indicador
             
             // Remove a classe active de todos os itens do menu
             document.querySelectorAll('.menu-item').forEach(item => {
@@ -1890,16 +1981,62 @@
         document.addEventListener('click', (e) => {
             if (!floatingMenu.contains(e.target) && !plusBtn.contains(e.target)) {
                 floatingMenu.classList.remove('show');
+                selectedModeIndicator.style.zIndex = '1'; // Restaura o z-index do indicador
             }
         });
 
-        // Event listener para ocultar indicador quando digitar
-        patternInput.addEventListener('input', () => {
-            if (patternInput.value.trim().length > 0) {
-                selectedModeIndicator.classList.remove('show');
-            } else {
-                selectedModeIndicator.classList.add('show');
+        // Função para auto-resize do textarea
+        function autoResizeTextarea(textarea) {
+            // Reset height to auto to get the correct scrollHeight
+            textarea.style.height = 'auto';
+            
+            // Calculate the new height based on content
+            const scrollHeight = textarea.scrollHeight;
+            const minHeight = 64; // 4rem in pixels (16px * 4)
+            
+            // Get max height based on screen size - ajustado para 7 linhas
+            let maxHeight = 192; // 12rem in pixels (16px * 12) - desktop (~7 linhas)
+            if (window.innerWidth <= 480) {
+                maxHeight = 132; // 8.25rem for small screens (~5 linhas)
+            } else if (window.innerWidth <= 768) {
+                maxHeight = 156; // 9.75rem for medium screens (~6 linhas)
             }
+            
+            // Set height within bounds
+            const newHeight = Math.max(minHeight, Math.min(scrollHeight, maxHeight));
+            textarea.style.height = newHeight + 'px';
+            
+            // Show/hide scrollbar based on content
+            if (scrollHeight > maxHeight) {
+                textarea.style.overflowY = 'auto';
+            } else {
+                textarea.style.overflowY = 'hidden';
+            }
+        }
+
+        // Event listener para auto-resize do textarea
+        patternInput.addEventListener('input', () => {
+            // Auto-resize do textarea
+            autoResizeTextarea(patternInput);
+            
+            // O indicador de modo permanece sempre visível
+            // Removido o código que ocultava o indicador ao digitar
+        });
+
+        // Event listener para paste (colar texto)
+        patternInput.addEventListener('paste', () => {
+            // Usar setTimeout para aguardar o conteúdo ser colado
+            setTimeout(() => {
+                autoResizeTextarea(patternInput);
+                
+                // O indicador de modo permanece sempre visível
+                // Removido o código que ocultava o indicador ao colar
+            }, 10);
+        });
+
+        // Event listener para redimensionamento da janela
+        window.addEventListener('resize', () => {
+            autoResizeTextarea(patternInput);
         });
 
         // Função para forçar atualização do favicon
@@ -1928,7 +2065,11 @@
             // Define o texto inicial da infoBox com animação
             typeText(infoBox, modeDescriptions[selectedMode]);
             patternInput.placeholder = 'Digite um padrão de frase ou deixe a IA sugerir...';
-            // Mostra o indicador inicial
+            
+            // Inicializa o auto-resize do textarea
+            autoResizeTextarea(patternInput);
+            
+            // Mostra o indicador de modo (sempre visível)
             selectedModeIndicator.classList.add('show');
             // Marca o modo padrão como ativo no menu
             const defaultItem = document.querySelector(`[data-mode="${selectedMode}"]`);
@@ -1947,3 +2088,4 @@
 
 </body>
 </html>
+
