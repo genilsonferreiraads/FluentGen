@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluentGen - Gere Padrões de Frases em Inglês com IA</title>
+    <!-- Favicon com cache busting -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIENyZWF0b3I6IENvcmVsRFJBVyAtLT4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMzJweCIgaGVpZ2h0PSIzMnB4IiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uOyB0ZXh0LXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IGltYWdlLXJlbmRlcmluZzpvcHRpbWl6ZVF1YWxpdHk7IGZpbGwtcnVsZTpldmVub2RkOyBjbGlwLXJ1bGU6ZXZlbm9kZCINCnZpZXdCb3g9IjAgMCA0MjQuNDUgNDI0LjQ1Ig0KIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIg0KIHhtbG5zOnhvZG09Imh0dHA6Ly93d3cuY29yZWwuY29tL2NvcmVsZHJhdy9vZG0vMjAwMyI+DQogPGRlZnM+DQogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQogICA8IVtDREFUQVsNCiAgICAuZmlsMSB7ZmlsbDojMDEwQjQ1fQ0KICAgIC5maWwyIHtmaWxsOiNGRkM2M0R9DQogICAgLmZpbDMge2ZpbGw6d2hpdGV9DQogICAgLmZpbDAge2ZpbGw6IzBBMkY3QztmaWxsLXJ1bGU6bm9uemVyb30NCiAgIF1dPg0KICA8L3N0eWxlPg0KIDwvZGVmcz4NCiA8ZyBpZD0iQ2FtYWRhX3gwMDIwXzEiPg0KICA8bWV0YWRhdGEgaWQ9IkNvcmVsQ29ycElEXzBDb3JlbC1MYXllciIvPg0KICA8ZyBpZD0iXzIwOTg3ODgxMTUzMjgiPg0KICAgPHBhdGggY2xhc3M9ImZpbDAiIGQ9Ik0zNjIuMjkgMzYyLjI5YzQxLjQzLC00MS40MyA2Mi4xNiwtOTUuNzUgNjIuMTYsLTE1MC4wNyAwLC0xMTcuMTcgLTk1LjA1LC0yMTIuMjIgLTIxMi4yMywtMjEyLjIyIC0xMTcuMTcsMCAtMjEyLjIyLDk1LjA1IC0yMTIuMjIsMjEyLjIyIDAsMTE3LjE4IDk1LjA1LDIxMi4yMyAyMTIuMjIsMjEyLjIzIDcwLjc1LDAgMTQxLjQ5LDAgMjEyLjIzLDAgMCwwIC00OS42OCwtNDkuNSAtNjIuMTYsLTYyLjE2eiIvPg0KICAgPHBhdGggY2xhc3M9ImZpbDEiIGQ9Ik0xNTAuNyAyNDcuNDRjMS40LC0wLjg0IC0wLjU4LC0yLjI3IC0xLjgyLC0yLjhsMS44MiAyLjh6Ii8+DQogICA8cGF0aCBjbGFzcz0iZmlsMiIgZD0iTTMwMC4wNyAxMTguMzhjMCwwIDAsMCAwLDB6Ii8+DQogICA8cGF0aCBjbGFzcz0iZmlsMyIgZD0iTTE1MS43MyAyNTkuMmM0LjA2LDIuOTkgOS4zMiwzNS43NCAxMi4wNCw0My4zNiA1LjM1LDE1LjA1IDE5LjI5LDI0LjY1IDMxLjM1LDkuNSA2LjU2LC04LjI0IDIwLjU0LC03NS45NiAyMS43MiwtODguNTcgNy44LDcuNSA4LjY5LDg0LjA1IDIxLjA0LDEwMS40IDEzLjQxLDE4Ljg0IDI3LjQsLTEuMDYgMzAuNjcsLTE1LjMyIDEuOTUsLTguNTEgOC45NywtNDUuMjkgOC45NCwtNTIuMjMgNS42LDQuODYgNy43MSwyNi45OCAxNy42MiwzNC42NyAxNy44NSwxMy44NCAyNC41NywtNC4wMiAzMi43NiwtMTAuMjcgNS4yNSwtMC41NiAxNi45LDEuNjQgMjAuMjQsLTMuNTcgNC4wOSwtNi4zOCAtMC4zNCwtMTMuMzkgLTcuODgsLTEzLjc5IC0zMi45MSwtMS43MSAtMjMuMTEsMTIuNDIgLTMyLjYsMTQuODYgLTcuNjQsLTIuNjcgLTEwLjIxLC0yMS42OCAtMTMuNTIsLTI4Ljk3IC01LjAyLC0xMS4wNSAtMTcuNjIsLTE2LjMxIC0yNy4wMywtNi41OSAtMTEuMjQsMTEuNiAtOS42Nyw1OS42NSAtMTcsNjkuMzkgLTYuNjgsLTIwLjU2IC04Ljg3LC0xMDAuMTEgLTI3LjAzLC0xMDcuMDMgLTMzLjg1LC0xMi45MSAtMjcuMzcsNzcuNjggLTM5Ljg0LDkyLjc3IC00Ljc5LDUuOCAtMTIuOTEsLTQxLjY3IC0xNS45NSwtNDcuNTUgLTQuMjcsLTguMjUgLTEzLjM0LC0xMS42OCAtMjEuOTEsLTcuODIgLTcuMzQsMy4zIC0xMSwxMi4xOSAtMTUuMTUsMTguNjEgLTYuNzksMTAuNDkgLTE3LjM0LDMuNzYgLTI2LjksNi41MiAtNi4zNywxLjg1IC05LjU0LDE1Ljc5IDcuMDEsMTYuMDEgNDEuODIsMC41NCAzMi40NywtMjIuOTMgNDEuNDIsLTI1LjM4eiIvPg0KICAgPHBhdGggY2xhc3M9ImZpbDIiIGQ9Ik0yNTIuMTggOTQuMzFjLTIyLjgxLDQuNjQgLTIzLjI0LDUzLjMxIC0zLjExLDU5Ljg1IDcuODYsMi41NiAxNi40NCwtMi4xMiAxNC4xNCw1LjQyIC0xLjQ5LDQuODQgLTUuMzcsMTAuNTIgLTkuODcsMTIuOTkgLTE3LjI1LDkuNDQgLTYuNjksMjEuMTEgOC43LDE3LjQ5IDI0LjQsLTUuNzUgMzcuMjEsLTI4Ljk4IDM3LjU2LC01Mi43NCAwLjE1LC0xMC4yIDIuNjYsLTMzLjQgLTUuNTgsLTQwLjA4IC02LjE0LC00Ljk4IC0zMy44OCwtNC41NCAtNDEuODQsLTIuOTN6Ii8+DQogICA8cGF0aCBjbGFzcz0iZmlsMiIgZD0iTTE1Mi45MSA5NC4zMWMtMjIuODEsNC42NCAtMjMuMjQsNTMuMzEgLTMuMSw1OS44NSA3Ljg2LDIuNTYgMTYuNDQsLTIuMTIgMTQuMTMsNS40MiAtMS40OCw0Ljg0IC01LjM2LDEwLjUyIC05Ljg2LDEyLjk5IC0xNy4yNiw5LjQ0IC02LjcsMjEuMTEgOC43LDE3LjQ5IDI0LjM5LC01Ljc1IDM3LjIxLC0yOC45OCAzNy41NSwtNTIuNzQgMC4xNSwtMTAuMiAyLjY3LC0zMy40IC01LjU3LC00MC4wOCAtNi4xNSwtNC45OCAtMzMuODksLTQuNTQgLTQxLjg1LC0yLjkzeiIvPg0KICA8L2c+DQogPC9nPg0KPC9zdmc+DQo=">
+    <link rel="shortcut icon" type="image/x-icon" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIENyZWF0b3I6IENvcmVsRFJBVyAtLT4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMzJweCIgaGVpZ2h0PSIzMnB4IiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uOyB0ZXh0LXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IGltYWdlLXJlbmRlcmluZzpvcHRpbWl6ZVF1YWxpdHk7IGZpbGwtcnVsZTpldmVub2RkOyBjbGlwLXJ1bGU6ZXZlbm9kZCINCnZpZXdCb3g9IjAgMCA0MjQuNDUgNDI0LjQ1Ig0KIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIg0KIHhtbG5zOnhvZG09Imh0dHA6Ly93d3cuY29yZWwuY29tL2NvcmVsZHJhdy9vZG0vMjAwMyI+DQogPGRlZnM+DQogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQogICA8IVtDREFUQVsNCiAgICAuZmlsMSB7ZmlsbDojMDEwQjQ1fQ0KICAgIC5maWwyIHtmaWxsOiNGRkM2M0R9DQogICAgLmZpbDMge2ZpbGw6d2hpdGV9DQogICAgLmZpbDAge2ZpbGw6IzBBMkY3QztmaWxsLXJ1bGU6bm9uemVyb30NCiAgIF1dPg0KICA8L3N0eWxlPg0KIDwvZGVmcz4NCiA8ZyBpZD0iQ2FtYWRhX3gwMDIwXzEiPg0KICA8bWV0YWRhdGEgaWQ9IkNvcmVsQ29ycElEXzBDb3JlbC1MYXllciIvPg0KICA8ZyBpZD0iXzIwOTg3ODgxMTUzMjgiPg0KICAgPHBhdGggY2xhc3M9ImZpbDAiIGQ9Ik0zNjIuMjkgMzYyLjI5YzQxLjQzLC00MS40MyA2Mi4xNiwtOTUuNzUgNjIuMTYsLTE1MC4wNyAwLC0xMTcuMTcgLTk1LjA1LC0yMTIuMjIgLTIxMi4yMywtMjEyLjIyIC0xMTcuMTcsMCAtMjEyLjIyLDk1LjA1IC0yMTIuMjIsMjEyLjIyIDAsMTE3LjE4IDk1LjA1LDIxMi4yMyAyMTIuMjIsMjEyLjIzIDcwLjc1LDAgMTQxLjQ5LDAgMjEyLjIzLDAgMCwwIC00OS42OCwtNDkuNSAtNjIuMTYsLTYyLjE2eiIvPg0KICAgPHBhdGggY2xhc3M9ImZpbDEiIGQ9Ik0xNTAuNyAyNDcuNDRjMS40LC0wLjg0IC0wLjU4LC0yLjI3IC0xLjgyLC0yLjhsMS44MiAyLjh6Ii8+DQogICA8cGF0aCBjbGFzcz0iZmlsMiIgZD0iTTMwMC4wNyAxMTguMzhjMCwwIDAsMCAwLDB6Ii8+DQogICA8cGF0aCBjbGFzcz0iZmlsMyIgZD0iTTE1MS43MyAyNTkuMmM0LjA2LDIuOTkgOS4zMiwzNS43NCAxMi4wNCw0My4zNiA1LjM1LDE1LjA1IDE5LjI5LDI0LjY1IDMxLjM1LDkuNSA2LjU2LC04LjI0IDIwLjU0LC03NS45NiAyMS43MiwtODguNTcgNy44LDcuNSA4LjY5LDg0LjA1IDIxLjA0LDEwMS40IDEzLjQxLDE4Ljg0IDI3LjQsLTEuMDYgMzAuNjcsLTE1LjMyIDEuOTUsLTguNTEgOC45NywtNDUuMjkgOC45NCwtNTIuMjMgNS42LDQuODYgNy43MSwyNi45OCAxNy42MiwzNC42NyAxNy44NSwxMy44NCAyNC41NywtNC4wMiAzMi43NiwtMTAuMjcgNS4yNSwtMC41NiAxNi45LDEuNjQgMjAuMjQsLTMuNTcgNC4wOSwtNi4zOCAtMC4zNCwtMTMuMzkgLTcuODgsLTEzLjc5IC0zMi45MSwtMS43MSAtMjMuMTEsMTIuNDIgLTMyLjYsMTQuODYgLTcuNjQsLTIuNjcgLTEwLjIxLC0yMS42OCAtMTMuNTIsLTI4Ljk3IC01LjAyLC0xMS4wNSAtMTcuNjIsLTE2LjMxIC0yNy4wMywtNi41OSAtMTEuMjQsMTEuNiAtOS42Nyw1OS42NSAtMTcsNjkuMzkgLTYuNjgsLTIwLjU2IC04Ljg3LC0xMDAuMTEgLTI3LjAzLC0xMDcuMDMgLTMzLjg1LC0xMi45MSAtMjcuMzcsNzcuNjggLTM5Ljg0LDkyLjc3IC00Ljc5LDUuOCAtMTIuOTEsLTQxLjY3IC0xNS45NSwtNDcuNTUgLTQuMjcsLTguMjUgLTEzLjM0LC0xMS42OCAtMjEuOTEsLTcuODIgLTcuMzQsMy4zIC0xMSwxMi4xOSAtMTUuMTUsMTguNjEgLTYuNzksMTAuNDkgLTE3LjM0LDMuNzYgLTI2LjksNi41MiAtNi4zNywxLjg1IC05LjU0LDE1Ljc5IDcuMDEsMTYuMDEgNDEuODIsMC41NCAzMi40NywtMjIuOTMgNDEuNDIsLTI1LjM4eiIvPg0KICAgPHBhdGggY2xhc3M9ImZpbDIiIGQ9Ik0yNTIuMTggOTQuMzFjLTIyLjgxLDQuNjQgLTIzLjI0LDUzLjMxIC0zLjExLDU5Ljg1IDcuODYsMi41NiAxNi40NCwtMi4xMiAxNC4xNCw1LjQyIC0xLjQ5LDQuODQgLTUuMzcsMTAuNTIgLTkuODcsMTIuOTkgLTE3LjI1LDkuNDQgLTYuNjksMjEuMTEgOC43LDE3LjQ5IDI0LjQsLTUuNzUgMzcuMjEsLTI4Ljk4IDM3LjU2LC01Mi43NCAwLjE1LC0xMC4yIDIuNjYsLTMzLjQgLTUuNTgsLTQwLjA4IC02LjE0LC00Ljk4IC0zMy44OCwtNC41NCAtNDEuODQsLTIuOTN6Ii8+DQogICA8cGF0aCBjbGFzcz0iZmlsMiIgZD0iTTE1Mi45MSA5NC4zMWMtMjIuODEsNC42NCAtMjMuMjQsNTMuMzEgLTMuMSw1OS44NSA3Ljg2LDIuNTYgMTYuNDQsLTIuMTIgMTQuMTMsNS40MiAtMS40OCw0Ljg0IC01LjM2LDEwLjUyIC05Ljg2LDEyLjk5IC0xNy4yNiw5LjQ0IC02LjcsMjEuMTEgOC43LDE3LjQ5IDI0LjM5LC01Ljc1IDM3LjIxLC0yOC45OCAzNy41NSwtNTIuNzQgMC4xNSwtMTAuMiAyLjY3LC0zMy40IC01LjU3LC00MC4wOCAtNi4xNSwtNC45OCAtMzMuODksLTQuNTQgLTQxLjg1LC0yLjkzeiIvPg0KICA8L2c+DQogPC9nPg0KPC9zdmc+DQo=">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIENyZWF0b3I6IENvcmVsRFJBVyAtLT4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTgwcHgiIGhlaWdodD0iMTgwcHgiIHZlcnNpb249IjEuMSIgc3R5bGU9InNoYXBlLXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IHRleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjsgaW1hZ2UtcmVuZGVyaW5nOm9wdGltaXplUXVhbGl0eTsgZmlsbC1ydWxlOmV2ZW5vZGQ7IGNsaXAtcnVsZTpldmVub2RkIg0Kdmlld0JveD0iMCAwIDQyNC40NSA0MjQuNDUiDQogeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiDQogeG1sbnM6eG9kbT0iaHR0cDovL3d3dy5jb3JlbC5jb20vY29yZWxkcmF3L29kbS8yMDAzIj4NCiA8ZGVmcz4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCiAgIDwhW0NEQVRBWw0KICAgIC5maWwxIHtmaWxsOiMwMTBCNDV9DQogICAgLmZpbDIge2ZpbGw6I0ZGQzYzRH0NCiAgICAuZmlsMyB7ZmlsbDp3aGl0ZX0NCiAgICAuZmlsMCB7ZmlsbDojMEEyRjdDO2ZpbGwtcnVsZTpub256ZXJvfQ0KICAgXV0+DQogIDwvc3R5bGU+DQogPC9kZWZzPg0KIDxnIGlkPSJDYW1hZGFfeDAwMjBfMSI+DQogIDxtZXRhZGF0YSBpZD0iQ29yZWxDb3JwSURfMENvcmVsLUxheWVyIi8+DQogIDxnIGlkPSJfMjA5ODc4ODExNTMyOCI+DQogICA8cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTM2Mi4yOSAzNjIuMjljNDEuNDMsLTQxLjQzIDYyLjE2LC05NS43NSA2Mi4xNiwtMTUwLjA3IDAsLTExNy4xNyAtOTUuMDUsLTIxMi4yMiAtMjEyLjIzLC0yMTIuMjIgLTExNy4xNywwIC0yMTIuMjIsOTUuMDUgLTIxMi4yMiwyMTIuMjIgMCwxMTcuMTggOTUuMDUsMjEyLjIzIDIxMi4yMiwyMTIuMjMgNzAuNzUsMCAxNDEuNDksMCAyMTIuMjMsMCAwLDAgLTQ5LjY4LC00OS41IC02Mi4xNiwtNjIuMTZ6Ii8+DQogICA8cGF0aCBjbGFzcz0iZmlsMSIgZD0iTTE1MC43IDI0Ny40NGMxLjQsLTAuODQgLTAuNTgsLTIuMjcgLTEuODIsLTIuOGwxLjgyIDIuOHoiLz4NCiAgIDxwYXRoIGNsYXNzPSJmaWwyIiBkPSJNMzAwLjA3IDExOC4zOGMwLDAgMCwwIDAsMHoiLz4NCiAgIDxwYXRoIGNsYXNzPSJmaWwzIiBkPSJNMTUxLjczIDI1OS4yYzQuMDYsMi45OSA5LjMyLDM1Ljc0IDEyLjA0LDQzLjM2IDUuMzUsMTUuMDUgMTkuMjksMjQuNjUgMzEuMzUsOS41IDYuNTYsLTguMjQgMjAuNTQsLTc1Ljk2IDIxLjcyLC04OC41NyA3LjgsNy41IDguNjksODQuMDUgMjEuMDQsMTAxLjQgMTMuNDEsMTguODQgMjcuNCwtMS4wNiAzMC42NywtMTUuMzIgMS45NSwtOC41MSA4Ljk3LC00NS4yOSA4Ljk0LC01Mi4yMyA1LjYsNC44NiA3LjcxLDI2Ljk4IDE3LjYyLDM0LjY3IDE3Ljg1LDEzLjg0IDI0LjU3LC00LjAyIDMyLjc2LC0xMC4yNyA1LjI1LC0wLjU2IDE2LjksMS42NCAyMC4yNCwtMy41NyA0LjA5LC02LjM4IC0wLjM0LC0xMy4zOSAtNy44OCwtMTMuNzkgLTMyLjkxLC0xLjcxIC0yMy4xMSwxMi40MiAtMzIuNiwxNC44NiAtNy42NCwtMi42NyAtMTAuMjEsLTIxLjY4IC0xMy41MiwtMjguOTcgLTUuMDIsLTExLjA1IC0xNy42MiwtMTYuMzEgLTI3LjAzLC02LjU5IC0xMS4yNCwxMS42IC05LjY3LDU5LjY1IC0xNyw2OS4zOSAtNi42OCwtMjAuNTYgLTguODcsLTEwMC4xMSAtMjcuMDMsLTEwNy4wMyAtMzMuODUsLTEyLjkxIC0yNy4zNyw3Ny42OCAtMzkuODQsOTIuNzcgLTQuNzksNS44IC0xMi45MSwtNDEuNjcgLTE1Ljk1LC00Ny41NSAtNC4yNywtOC4yNSAtMTMuMzQsLTExLjY4IC0yMS45MSwtNy44MiAtNy4zNCwzLjMgLTExLDEyLjE5IC0xNS4xNSwxOC42MSAtNi43OSwxMC40OSAtMTcuMzQsMy43NiAtMjYuOSw2LjUyIC02LjM3LDEuODUgLTkuNTQsMTUuNzkgNy4wMSwxNi4wMSA0MS44MiwwLjU0IDMyLjQ3LC0yMi45MyA0MS40MiwtMjUuMzh6Ii8+DQogICA8cGF0aCBjbGFzcz0iZmlsMiIgZD0iTTI1Mi4xOCA5NC4zMWMtMjIuODEsNC42NCAtMjMuMjQsNTMuMzEgLTMuMTEsNTkuODUgNy44NiwyLjU2IDE2LjQ0LC0yLjEyIDE0LjE0LDUuNDIgLTEuNDksNC44NCAtNS4zNywxMC41MiAtOS44NywxMi45OSAtMTcuMjUsOS40NCAtNi42OSwyMS4xMSA4LjcsMTcuNDkgMjQuNCwtNS43NSAzNy4yMSwtMjguOTggMzcuNTYsLTUyLjc0IDAuMTUsLTEwLjIgMi42NiwtMzMuNCAtNS41OCwtNDAuMDggLTYuMTQsLTQuOTggLTMzLjg4LC00LjU0IC00MS44NCwtMi45M3oiLz4NCiAgIDxwYXRoIGNsYXNzPSJmaWwyIiBkPSJNMTUyLjkxIDk0LjMxYy0yMi44MSw0LjY0IC0yMy4yNCw1My4zMSAtMy4xLDU5Ljg1IDcuODYsMi41NiAxNi40NCwtMi4xMiAxNC4xMyw1LjQyIC0xLjQ4LDQuODQgLTUuMzYsMTAuNTIgLTkuODYsMTIuOTkgLTE3LjI2LDkuNDQgLTYuNywyMS4xMSA4LjcsMTcuNDkgMjQuMzksLTUuNzUgMzcuMjEsLTI4Ljk4IDM3LjU1LC01Mi43NCAwLjE1LC0xMC4yIDIuNjcsLTMzLjQgLTUuNTcsLTQwLjA4IC02LjE1LC00Ljk4IC0zMy44OSwtNC41NCAtNDEuODUsLTIuOTN6Ii8+DQogIDwvZz4NCiA8L2c+DQo8L3N2Zz4NCg==">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.9) 0%, rgba(13, 17, 23, 0.95) 100%);
+            color: #c9d1d9;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background particles - removed for uniform background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: -1;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-20px) translateY(-10px); }
+            50% { transform: translateX(20px) translateY(10px); }
+            75% { transform: translateX(-10px) translateY(20px); }
+        }
+        
+        /* FluentGen title animation */
+        .fluentgen-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+        
+        .fluentgen-title::before {
+            content: "";
+            margin-right: 0.4rem;
+            display: inline-block;
+            width: 0.8em;
+            height: 0.8em;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NDMuMTMgNTQyLjE2IiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjxkZWZzPjxzdHlsZT4uc3RyMCB7c3Ryb2tlOiNiM2IzYjM7c3Ryb2tlLXdpZHRoOjEuMzc7c3Ryb2tlLW1pdGVybGltaXQ6MjIuOTI1Nn0uZmlsMSB7ZmlsbDojMDEwQjQ1fS5maWwzIHtmaWxsOiMwQTJGN0N9LmZpbDIge2ZpbGw6I0ZGQzYzRH0uZmlsMCB7ZmlsbDojZmZmO2ZpbGwtcnVsZTpub256ZXJvfTwvc3R5bGU+PC9kZWZzPjxnPjxwYXRoIGNsYXNzPSJmaWwwIHN0cjAiIGQ9Ik00NjIuMjggNDYyLjI4YzUyLjc4LC01Mi43OSA3OS4xOSwtMTIxLjk5IDc5LjE5LC0xOTEuMiAwLC0xNDkuMyAtMTIxLjEsLTI3MC4zOSAtMjcwLjM5LC0yNzAuMzkgLTE0OS4zLDAgLTI3MC4zOSwxMjEuMDkgLTI3MC4zOSwyNzAuMzkgMCwxNDkuMjkgMTIxLjA5LDI3MC4zOSAyNzAuMzksMjcwLjM5IDkwLjEzLDAgMTgwLjI2LDAgMjcwLjM5LDAgMCwwIC02My4yOSwtNjMuMDYgLTc5LjE5LC03OS4xOXoiLz48cGF0aCBjbGFzcz0iZmlsMSIgZD0iTTE5Mi42OSAzMTUuOTVjMS43OCwtMS4wOCAtMC43NCwtMi44OSAtMi4zMSwtMy41N2wyLjMxIDMuNTd6Ii8+PHBhdGggY2xhc3M9ImZpbDIiIGQ9Ik0zODMuMDEgMTUxLjUyYzAsMCAwLDAgMCwweiIvPjxwYXRoIGNsYXNzPSJmaWwzIiBkPSJNMTk0IDMzMC45M2M1LjE4LDMuODEgMTEuODgsNDUuNTMgMTUuMzQsNTUuMjQgNi44MiwxOS4xOCAyNC41OCwzMS40MiAzOS45NSwxMi4xMSA4LjM2LC0xMC41IDI2LjE2LC05Ni43OCAyNy42NywtMTEyLjg0IDkuOTQsOS41NCAxMS4wNywxMDcuMDggMjYuODEsMTI5LjE4IDE3LjA5LDI0IDM0LjkxLC0xLjM1IDM5LjA3LC0xOS41MSAyLjQ4LC0xMC44NSAxMS40MywtNTcuNzEgMTEuNCwtNjYuNTUgNy4xMyw2LjE5IDkuODIsMzQuMzggMjIuNDQsNDQuMTcgMjIuNzQsMTcuNjQgMzEuMywtNS4xMSA0MS43NCwtMTMuMDggNi42OSwtMC43MiAyMS41MywyLjA5IDI1Ljc5LC00LjU1IDUuMjIsLTguMTMgLTAuNDQsLTE3LjA3IC0xMC4wMywtMTcuNTcgLTQxLjkzLC0yLjE3IC0yOS40NiwxNS44MyAtNDEuNTUsMTguOTQgLTkuNzIsLTMuNCAtMTMsLTI3LjYzIC0xNy4yMSwtMzYuOTEgLTYuNDEsLTE0LjA5IC0yMi40NiwtMjAuNzkgLTM0LjQ1LC04LjQxIC0xNC4zMiwxNC43OSAtMTIuMzIsNzYgLTIxLjY1LDg4LjQxIC04LjUyLC0yNi4xOCAtMTEuMzEsLTEyNy41NCAtMzQuNDUsLTEzNi4zNiAtNDMuMTMsLTE2LjQ1IC0zNC44OCw5OC45NyAtNTAuNzYsMTE4LjIgLTYuMSw3LjM5IC0xNi40NSwtNTMuMDkgLTIwLjMyLC02MC41OCAtNS40NCwtMTAuNTEgLTE3LC0xNC44OSAtMjcuOTIsLTkuOTcgLTkuMzUsNC4yMSAtMTQuMDEsMTUuNTMgLTE5LjI5LDIzLjcxIC04LjY2LDEzLjM3IC0yMi4xLDQuNzkgLTM0LjI4LDguMzEgLTguMTEsMi4zNSAtMTIuMTYsMjAuMTIgOC45NCwyMC4zOSA1My4yOCwwLjcgNDEuMzYsLTI5LjIxIDUyLjc2LC0zMi4zM3oiLz48cGF0aCBjbGFzcz0iZmlsMiIgZD0iTTMyMS45OCAxMjAuODVjLTI5LjA2LDUuOTEgLTI5LjYxLDY3LjkyIC0zLjk1LDc2LjI2IDEwLjAxLDMuMjUgMjAuOTQsLTIuNzEgMTguMDEsNi45IC0xLjg5LDYuMTYgLTYuODQsMTMuNCAtMTIuNTgsMTYuNTQgLTIxLjk4LDEyLjAzIC04LjUyLDI2LjkxIDExLjA5LDIyLjI5IDMxLjA5LC03LjMzIDQ3LjQxLC0zNi45MiA0Ny44NSwtNjcuMiAwLjE5LC0xMi45OSAzLjM5LC00Mi41NSAtNy4xLC01MS4wNiAtNy44MywtNi4zNSAtNDMuMTcsLTUuNzkgLTUzLjMyLC0zLjczeiIvPjxwYXRoIGNsYXNzPSJmaWwyIiBkPSJNMTk1LjUxIDEyMC44NWMtMjkuMDYsNS45MSAtMjkuNjEsNjcuOTIgLTMuOTYsNzYuMjYgMTAuMDIsMy4yNSAyMC45NSwtMi43MSAxOC4wMSw2LjkgLTEuODgsNi4xNiAtNi44MywxMy40IC0xMi41NywxNi41NCAtMjEuOTgsMTIuMDMgLTguNTIsMjYuOTEgMTEuMDksMjIuMjkgMzEuMDgsLTcuMzMgNDcuNDEsLTM2LjkyIDQ3Ljg1LC02Ny4yIDAuMTksLTEyLjk5IDMuMzksLTQyLjU1IC03LjEsLTUxLjA2IC03LjgzLC02LjM1IC00My4xOCwtNS43OSAtNTMuMzIsLTMuNzN6Ii8+PC9nPjwvc3ZnPg==');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+            animation: sparkleGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes sparkleGlow {
+            0% { 
+                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+                transform: scale(1);
+            }
+            100% { 
+                filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.8));
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes titleGlow {
+            0% { 
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                           0 0 40px rgba(255, 255, 255, 0.3),
+                           0 0 60px rgba(255, 255, 255, 0.1);
+            }
+            100% { 
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
+                           0 0 60px rgba(255, 255, 255, 0.5),
+                           0 0 90px rgba(255, 255, 255, 0.2);
+            }
+        }
+        
+        /* Subtitle animation */
+        .subtitle-text {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            animation: subtitleFadeIn 1.5s ease-out 0.5s forwards;
+        }
+        
+        @keyframes subtitleFadeIn {
+            0% { 
+                opacity: 0; 
+                transform: translateY(20px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        .container {
+            max-width: 600px !important;
+            margin: 2rem auto !important;
+            padding: 2rem !important;
+            background: linear-gradient(145deg, rgba(13, 17, 23, 0.95) 0%, rgba(22, 27, 34, 0.9) 100%);
+            border-radius: 1.5rem;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: auto !important;
+            position: relative;
+            backdrop-filter: blur(10px);
+            animation: containerGlow 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes containerGlow {
+            0% { 
+                box-shadow: 
+                    0 20px 40px rgba(0, 0, 0, 0.3),
+                    0 0 0 1px rgba(255, 255, 255, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+            100% { 
+                box-shadow: 
+                    0 25px 50px rgba(0, 0, 0, 0.4),
+                    0 0 0 1px rgba(255, 255, 255, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+        }
+        .input-group {
+            display: flex;
+            flex-direction: row; /* Padrão desktop */
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .input-container {
+            position: relative;
+            flex: 1;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem 4rem 3rem 4rem;
+            background: linear-gradient(145deg, rgba(13, 17, 23, 0.8) 0%, rgba(22, 27, 34, 0.6) 100%);
+            border: 2px solid #30363d;
+            border-radius: 1rem;
+            color: #c9d1d9;
+            outline: none;
+            font-size: 1rem;
+            position: relative;
+            min-height: 4rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                0 0 0 0 rgba(88, 166, 255, 0.4);
+            animation: inputPulse 3s ease-in-out infinite;
+        }
+        
+        .input-field:focus {
+            border-color: #58a6ff;
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(88, 166, 255, 0.4),
+                0 0 40px rgba(88, 166, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .input-field::placeholder {
+            color: rgba(201, 209, 217, 0.6);
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1rem;
+            animation: placeholderGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes inputPulse {
+            0%, 100% { 
+                box-shadow: 
+                    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                    0 0 0 0 rgba(88, 166, 255, 0.4);
+            }
+            50% { 
+                box-shadow: 
+                    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                    0 0 10px rgba(88, 166, 255, 0.2);
+            }
+        }
+        
+        @keyframes placeholderGlow {
+            0% { color: rgba(201, 209, 217, 0.4); }
+            100% { color: rgba(201, 209, 217, 0.8); }
+        }
+
+        .plus-icon {
+            position: absolute;
+            left: 1rem;
+            top: 1.2rem;
+            background: #30363d;
+            border: none;
+            color: #c9d1d9;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.6rem;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .plus-icon:hover {
+            background-color: #40464d;
+            color: #ffffff;
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-menu {
+            position: absolute;
+            top: calc(100% - 2rem); /* Sobe muito mais para ficar praticamente por cima */
+            left: 0.75rem; /* Alinhado com o centro do ícone + */
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 0.5rem;
+            width: auto;
+            min-width: fit-content;
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+        .floating-menu.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            color: #c9d1d9;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .menu-item:hover {
+            background-color: #30363d;
+        }
+        
+        .menu-item.active {
+            background-color: rgba(88, 166, 255, 0.2);
+            color: #58a6ff;
+            border: 1px solid rgba(88, 166, 255, 0.3);
+        }
+        
+        .menu-item.active i {
+            color: #58a6ff;
+        }
+        
+        .active-check {
+            margin-left: auto;
+            color: #58a6ff;
+            font-size: 0.9rem;
+        }
+        .menu-item i {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            width: 1.25rem;
+            text-align: center;
+        }
+
+        .generate-icon {
+            position: absolute;
+            right: 1rem;
+            top: 1.2rem;
+            background: none;
+            border: none;
+            color: #79c0ff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.6rem;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+        }
+        
+        .generate-icon:hover {
+            color: #58a6ff;
+            transform: scale(1.1) translateY(-2px);
+        }
+        
+        .generate-icon:disabled {
+            color: #6b7280;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Selected Mode Indicator in Input */
+        .selected-mode-indicator {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 3.5rem; /* Mais à direita para não ficar embaixo do ícone + */
+            background: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(0.5rem);
+            transition: all 0.3s ease;
+        }
+        .selected-mode-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .selected-mode-indicator i {
+            font-size: 0.7rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #238636;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem; /* Espaço entre o ícone e o texto */
+        }
+        .btn:hover {
+            background-color: #2ea043;
+        }
+        .btn:disabled {
+            background-color: #21262d;
+            color: #8b949e;
+            cursor: not-allowed;
+        }
+        .phrase-card {
+            background-color: #0d1117;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid #30363d;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .phrase-card {
+                padding: 1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .phrase-card-content h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .phrase-card-content p {
+                font-size: 0.9rem;
+                margin-bottom: 1.25rem;
+                padding-bottom: 3rem;
+            }
+            
+            .phrase-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: stretch;
+            }
+            
+            .action-btn, .speed-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .phrase-corner-actions {
+                bottom: 1rem;
+                right: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .icon-btn {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .phrase-card {
+                padding: 0.875rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .phrase-card-content h3 {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .phrase-card-content p {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+                padding-bottom: 2.5rem;
+            }
+            
+            .action-btn, .speed-btn {
+                padding: 0.625rem 0.875rem;
+                font-size: 0.85rem;
+            }
+            
+            .phrase-corner-actions {
+                bottom: 0.875rem;
+                right: 0.875rem;
+            }
+            
+            .icon-btn {
+                width: 2.25rem;
+                height: 2.25rem;
+                font-size: 0.9rem;
+            }
+        }
+        .phrase-corner-actions {
+            position: absolute;
+            bottom: 0.75rem;
+            right: 0.75rem;
+            display: flex;
+            gap: 0.375rem;
+        }
+        .phrase-card-content h3, .phrase-card-content p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .phrase-card-content h3 {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .phrase-card-content p {
+            font-style: italic;
+            color: #8b949e;
+            margin-bottom: 1rem;
+            padding-bottom: 2.5rem; /* Espaço para os ícones na parte inferior */
+        }
+        .copy-icon {
+            color: #4b5563;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: color 0.2s ease-in-out;
+        }
+        .copy-icon:hover {
+            color: #c9d1d9;
+        }
+        .copy-tooltip {
+            position: absolute;
+            background-color: #21262d;
+            color: #c9d1d9;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            border: 1px solid #30363d;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            white-space: nowrap;
+        }
+        .copy-tooltip.show {
+            opacity: 1;
+        }
+        .phrase-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .action-btn {
+            background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+            color: white;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-weight: 500;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 6px rgba(88, 166, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .action-btn:hover {
+            background: linear-gradient(135deg, #79c0ff 0%, #58a6ff 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.4);
+        }
+        .action-btn:hover::before {
+            left: 100%;
+        }
+        .action-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(88, 166, 255, 0.3);
+        }
+        .action-btn:disabled {
+            opacity: 0.7 !important;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        .action-btn:disabled:hover {
+            transform: none !important;
+            box-shadow: 0 2px 8px rgba(88, 166, 255, 0.3) !important;
+        }
+        
+        /* Speed Control Button */
+        .speed-btn {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            color: white;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-weight: 500;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 6px rgba(139, 92, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-width: 80px;
+            justify-content: center;
+        }
+        .speed-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .speed-btn:hover {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+        }
+        .speed-btn:hover::before {
+            left: 100%;
+        }
+        .speed-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(139, 92, 246, 0.3);
+        }
+        .speed-btn:disabled {
+            opacity: 0.7 !important;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        .speed-btn:disabled:hover {
+            transform: none !important;
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3) !important;
+        }
+        
+        /* Icon-only buttons for corner placement */
+        .icon-btn {
+            background: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            padding: 0.375rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            font-size: 0.875rem;
+        }
+        .icon-btn:hover {
+            background: rgba(88, 166, 255, 0.2);
+            color: #79c0ff;
+            border-color: rgba(88, 166, 255, 0.3);
+            transform: scale(1.05);
+        }
+        .icon-btn.repeat-active {
+            background: rgba(229, 62, 62, 0.1);
+            color: #e53e3e;
+            border-color: rgba(229, 62, 62, 0.2);
+        }
+        .icon-btn.repeat-active:hover {
+            background: rgba(229, 62, 62, 0.2);
+            color: #c53030;
+            border-color: rgba(229, 62, 62, 0.3);
+        }
+        
+        /* Toggle Switch Container */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .toggle-label {
+            color: #c9d1d9;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            width: 3rem;
+            height: 1.5rem;
+            background: #4a5568;
+            border-radius: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .toggle-switch:hover {
+            background: #5a6578;
+        }
+        .toggle-switch.active {
+            background: #10b981;
+        }
+        .toggle-switch.active:hover {
+            background: #059669;
+        }
+        
+        /* Toggle Slider */
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 1.25rem;
+            height: 1.25rem;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(1.5rem);
+        }
+        .repeat-btn-active {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%) !important;
+            box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3) !important;
+        }
+        .repeat-btn-active:hover {
+            background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%) !important;
+            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.4) !important;
+        }
+        .info-box {
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: #c9d1d9;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 1.5;
+            position: relative;
+            overflow: hidden;
+        }
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+        .info-box.typing::before {
+            left: 100%;
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: #58a6ff;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+        
+        .typing-cursor-futuristic {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: linear-gradient(45deg, #22c55e, #3b82f6);
+            margin-left: 3px;
+            animation: futuristicBlink 0.8s infinite, cursorGlow 2s infinite;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        @keyframes futuristicBlink {
+            0%, 50% { 
+                opacity: 1; 
+                transform: scaleY(1);
+            }
+            51%, 100% { 
+                opacity: 0.3; 
+                transform: scaleY(0.8);
+            }
+        }
+        
+        @keyframes cursorGlow {
+            0%, 100% { 
+                box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+            }
+            50% { 
+                box-shadow: 0 0 20px rgba(34, 197, 94, 0.8),
+                           0 0 30px rgba(59, 130, 246, 0.3);
+            }
+        }
+
+        .message-box {
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        .mode-select {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            color: #c9d1d9;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: calc(100% - 10px);
+            background-position-y: center;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 800px !important;
+                padding: 1.25rem !important;
+            }
+        }
+        
+        @media (min-width: 1200px) and (max-width: 1279px) {
+            .container {
+                max-width: 500px;
+                padding: 1.25rem;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .container {
+                max-width: 550px;
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+                margin: 0.5rem;
+                padding: 1.5rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .input-container {
+                width: 100%;
+            }
+            
+            .input-field {
+                padding: 1rem 3.5rem 2.5rem 3.5rem;
+                font-size: 1rem;
+                min-height: 3.5rem;
+            }
+            
+            .plus-icon {
+                left: 0.75rem;
+                top: 1rem;
+                width: 2.25rem;
+                height: 2.25rem;
+                font-size: 1rem;
+            }
+            
+            .generate-icon {
+                right: 0.75rem;
+                top: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.5rem;
+            }
+            
+            .floating-menu {
+                left: 0.5rem;
+                top: calc(100% - 1.5rem);
+                width: calc(100% - 1rem);
+                max-width: none;
+            }
+            
+            .menu-item {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .selected-mode-indicator {
+                left: 3.5rem;
+                bottom: 0.75rem;
+                font-size: 0.7rem;
+                padding: 0.2rem 0.4rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                margin: 0.25rem;
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .subtitle-text {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+            
+            .input-field {
+                padding: 0.875rem 3rem 2.25rem 3rem;
+                font-size: 0.95rem;
+                min-height: 3rem;
+            }
+            
+            .plus-icon {
+                left: 0.5rem;
+                top: 0.875rem;
+                width: 2rem;
+                height: 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .generate-icon {
+                right: 0.5rem;
+                top: 0.875rem;
+                width: 2.25rem;
+                height: 2.25rem;
+                font-size: 1.3rem;
+            }
+            
+            .floating-menu {
+                left: 0.25rem;
+                top: calc(100% - 1.25rem);
+                width: calc(100% - 0.5rem);
+            }
+            
+            .selected-mode-indicator {
+                left: 3rem;
+                bottom: 0.5rem;
+                font-size: 0.65rem;
+                padding: 0.15rem 0.3rem;
+            }
+            
+            .toggle-container {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            
+            .toggle-label {
+                font-size: 0.85rem;
+            }
+            
+            .toggle-switch {
+                width: 2.5rem;
+                height: 1.25rem;
+            }
+            
+            .toggle-slider {
+                width: 1rem;
+                height: 1rem;
+            }
+            
+            .toggle-switch.active .toggle-slider {
+                transform: translateX(1.25rem);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-4xl font-bold text-center mb-4 text-white animate-pulse">
+            <span class="fluentgen-title">FluentGen</span>
+        </h1>
+        <p class="text-center text-gray-300 mb-8 text-lg leading-relaxed max-w-4xl mx-auto">
+            <span class="subtitle-text">Gere Padrões de Frases em Inglês Com IA e Treine Sua Fluência — Áudio, Connected Speech e Exercícios Práticos.</span>
+        </p>
+
+        <div class="input-group">
+            <div class="input-container">
+                <input type="text" id="patternInput" class="input-field" placeholder="Digite sua consulta ou deixe a IA sugerir...">
+                <div id="selectedModeIndicator" class="selected-mode-indicator">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Frases Padrão</span>
+                </div>
+                <button id="plusBtn" class="plus-icon">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button id="generateBtn" class="generate-icon">
+                    <i class="fa-solid fa-circle-arrow-up"></i>
+                </button>
+                <div id="floatingMenu" class="floating-menu">
+                    <div class="menu-item" data-mode="standard">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>Frases Padrão</span>
+                        <i class="fa-solid fa-check active-check" style="display: none;"></i>
+                    </div>
+                    <div class="menu-item" data-mode="conversation">
+                        <i class="fas fa-comments"></i>
+                        <span>Conversa</span>
+                        <i class="fa-solid fa-check active-check" style="display: none;"></i>
+                    </div>
+                    <div class="menu-item" data-mode="slang">
+                        <i class="fas fa-fire"></i>
+                        <span>Gírias e Linguagem Informal</span>
+                        <i class="fa-solid fa-check active-check" style="display: none;"></i>
+                    </div>
+                    <div class="menu-item" data-mode="specific-themes">
+                        <i class="fas fa-palette"></i>
+                        <span>Temas Específicos</span>
+                        <i class="fa-solid fa-check active-check" style="display: none;"></i>
+                    </div>
+                    <div class="menu-item" data-mode="conversation-phrases">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Frases de Conversação</span>
+                        <i class="fa-solid fa-check active-check" style="display: none;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="infoBox" class="info-box"></div>
+        <div id="messageBox" class="hidden message-box"></div>
+        <div class="flex justify-center mb-2">
+            <div class="toggle-container">
+                <span class="toggle-label">Connected Speech</span>
+                <button id="connectSpeechToggle" class="toggle-switch">
+                    <div class="toggle-slider"></div>
+                </button>
+            </div>
+        </div>
+        <div id="phrasesContainer">
+            <!-- Frases geradas serão inseridas aqui -->
+        </div>
+
+    </div>
+
+    <script type="module">
+        // Variáveis globais
+        let userId = 'local-user-' + Date.now();
+        
+        // Configuração da API do Gemini
+        const GEMINI_API_KEY = "AIzaSyBVSjwHakwAsg5ePbjPbrC_gqF5P2X04tQ";
+
+        // Cache de áudio na memória
+        const audioCache = {};
+
+        // Estado do áudio em loop
+        let currentLoopingAudio = null;
+        let currentLoopingButton = null;
+
+        // Estado da velocidade do áudio
+        let playbackRate = 1.0;
+        // Estado do modo de "connected speech"
+        let isConnectedSpeechMode = false;
+
+        // UI elements
+        const plusBtn = document.getElementById('plusBtn');
+        const patternInput = document.getElementById('patternInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const floatingMenu = document.getElementById('floatingMenu');
+        const phrasesContainer = document.getElementById('phrasesContainer');
+        const infoBox = document.getElementById('infoBox');
+        const messageBox = document.getElementById('messageBox');
+        const connectSpeechToggle = document.getElementById('connectSpeechToggle');
+        const selectedModeIndicator = document.getElementById('selectedModeIndicator');
+
+        // Variável para armazenar o modo selecionado
+        let selectedMode = 'standard';
+        
+        // Variações da descrição do site
+        const siteDescriptions = [
+            "Gere Padrões de Frases em Inglês Com IA e Treine Sua Fluência — Áudio, Connected Speech e Exercícios Práticos.",
+            "Domine o Inglês com IA: Crie Frases Personalizadas, Pratique Pronúncia e Acelere Seu Aprendizado.",
+            "Aprenda Inglês de Forma Inteligente: Gere Frases, Treine Áudio e Desenvolva Fluência Natural.",
+            "Sua Plataforma de Inglês com IA: Frases Personalizadas, Áudio Nativo e Exercícios Interativos.",
+            "Transforme Seu Inglês com IA: Gere Frases, Pratique Connected Speech e Alcance Fluência Real.",
+            "Inglês Inteligente: Crie Frases com IA, Treine Pronúncia e Desenvolva Habilidades Conversacionais.",
+            "Acelere Seu Inglês: Gere Frases Personalizadas, Pratique Áudio e Domine a Língua Inglesa.",
+            "Inglês com IA: Frases Inteligentes, Áudio Nativo e Exercícios Práticos para Fluência Total.",
+            "Desenvolva Seu Inglês: Gere Frases com IA, Treine Connected Speech e Pratique Conversação.",
+            "Inglês Moderno: IA, Frases Personalizadas, Áudio Nativo e Exercícios para Fluência Completa."
+        ];
+        
+        // Controle de rotação das descrições
+        let currentDescriptionIndex = 0;
+        let usedDescriptions = new Set();
+        
+        // Função para obter uma descrição aleatória sem repetição
+        function getRandomDescription() {
+            // Se todas as descrições foram usadas, limpa o set
+            if (usedDescriptions.size >= siteDescriptions.length) {
+                usedDescriptions.clear();
+            }
+            
+            // Gera um índice aleatório que não foi usado
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * siteDescriptions.length);
+            } while (usedDescriptions.has(randomIndex));
+            
+            // Marca como usado
+            usedDescriptions.add(randomIndex);
+            currentDescriptionIndex = randomIndex;
+            
+            return siteDescriptions[randomIndex];
+        }
+        
+        // Função para definir uma descrição aleatória na inicialização
+        function setRandomDescription() {
+            const subtitleElement = document.querySelector('.subtitle-text');
+            if (!subtitleElement) return;
+            
+            // Define uma descrição aleatória apenas na inicialização
+            subtitleElement.textContent = getRandomDescription();
+        }
+
+        // Mapeia o modo selecionado para a sua descrição
+        const modeDescriptions = {
+            'standard': "Pratique padrões de frases comuns. Complete as lacunas ou deixe a IA sugerir.",
+            'conversation': "Gere diálogos naturais sobre qualquer tópico. Perfeito para conversação.",
+            'slang': "Aprenda gírias e expressões informais. Fale como um nativo americano.",
+            'specific-themes': "Foque em temas específicos. Frases e diálogos sobre assuntos de interesse.",
+            'conversation-phrases': "Ideal para iniciantes! Este modo gera perguntas e respostas básicas e essenciais para a comunicação diária. Você pode digitar um tópico (ex: 'saudações') ou deixar a IA sugerir um."
+        };
+
+        // Mapeia o modo selecionado para ícone e nome
+        const modeOptions = {
+            'standard': { icon: 'fas fa-comment-dots', name: 'Frases Padrão' },
+            'conversation': { icon: 'fas fa-comments', name: 'Conversa' },
+            'slang': { icon: 'fas fa-fire', name: 'Gírias e Linguagem Informal' },
+            'specific-themes': { icon: 'fas fa-palette', name: 'Temas Específicos' },
+            'conversation-phrases': { icon: 'fas fa-question-circle', name: 'Frases de Conversação' }
+        };
+
+        // Função para inicialização local
+        function initializeApp() {
+            console.log("Aplicação inicializada em modo local.");
+            console.log("User ID:", userId);
+        }
+
+        function showMessage(msg, type = 'info') {
+            messageBox.textContent = msg;
+            messageBox.classList.remove('hidden');
+        }
+
+        // Função para obter frases existentes do localStorage
+        function getExistingPhrases() {
+            const existingPhrases = JSON.parse(localStorage.getItem('existingPhrases') || '[]');
+            return existingPhrases;
+        }
+
+        async function getSuggestedPattern() {
+            const systemPrompt = "You are a language tutor. Provide a single, random, and creative simple English sentence pattern that can be completed with a verb. The output must be only the pattern string, with no other text or punctuation. Examples: 'I want to ___', 'He needs to ___', 'You have to ___', 'Can you help me ___', 'We should ___.";
+            const userQuery = "Suggest a simple English sentence pattern.";
+            const apiKey = GEMINI_API_KEY;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const candidate = result.candidates?.[0];
+            return candidate?.content?.parts?.[0]?.text?.trim() || "I want to ___"; // Fallback pattern
+        }
+
+        async function getSuggestedConversationTopic() {
+            const systemPrompt = "You are a language tutor. Provide a single, random, and simple everyday English conversation topic. The output must be only the topic string, with no other text or punctuation. Examples: 'ordering coffee', 'asking for directions', 'talking about the weather', 'making small talk'.";
+            const userQuery = "Suggest a simple English conversation topic.";
+            const apiKey = GEMINI_API_KEY;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const candidate = result.candidates?.[0];
+            return candidate?.content?.parts?.[0]?.text?.trim() || "making small talk"; // Fallback topic
+        }
+        
+        async function getSuggestedConversationQuestionTopic() {
+            const systemPrompt = "You are a language tutor. Provide a single, random, and simple everyday English conversation topic that involves questions and answers. The output must be only the topic string, with no other text or punctuation. Examples: 'asking for help', 'making plans', 'ordering food'.";
+            const userQuery = "Suggest a simple English conversation question topic.";
+            const apiKey = GEMINI_API_KEY;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const candidate = result.candidates?.[0];
+            return candidate?.content?.parts?.[0]?.text?.trim() || "asking for help"; // Fallback topic
+        }
+
+        async function getSuggestedSpecificTheme() {
+            const systemPrompt = "You are a language tutor. Provide a single, random, and simple everyday English theme. The output must be only the theme string, with no other text or punctuation. Examples: 'cooking a meal', 'getting to know a new city', 'discussing technology', 'sports and hobbies', 'shopping for clothes'.";
+            const userQuery = "Suggest a specific English theme.";
+            const apiKey = GEMINI_API_KEY;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const candidate = result.candidates?.[0];
+            return candidate?.content?.parts?.[0]?.text?.trim() || "discussing a new movie"; // Fallback theme
+        }
+
+        // Função para alternar o menu flutuante
+        function toggleFloatingMenu() {
+            floatingMenu.classList.toggle('show');
+        }
+
+        // Função de animação de digitação futurística
+        function typeText(element, text) {
+            element.innerHTML = '';
+            element.classList.add('typing');
+            
+            let i = 0;
+            const typeInterval = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeInterval);
+                    element.classList.remove('typing');
+                    // Não adiciona cursor piscante no final
+                }
+            }, 30); // Velocidade de digitação otimizada
+        }
+
+        // Função para selecionar um modo
+        function selectMode(mode) {
+            selectedMode = mode;
+            floatingMenu.classList.remove('show');
+            
+            // Remove a classe active de todos os itens do menu
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+                const checkIcon = item.querySelector('.active-check');
+                if (checkIcon) {
+                    checkIcon.style.display = 'none';
+                }
+            });
+            
+            // Adiciona a classe active ao item selecionado
+            const selectedItem = document.querySelector(`[data-mode="${mode}"]`);
+            if (selectedItem) {
+                selectedItem.classList.add('active');
+                const checkIcon = selectedItem.querySelector('.active-check');
+                if (checkIcon) {
+                    checkIcon.style.display = 'inline-block';
+                }
+            }
+            
+            // Atualiza o indicador no input
+            const modeOption = modeOptions[mode];
+            const indicatorIcon = selectedModeIndicator.querySelector('i');
+            const indicatorText = selectedModeIndicator.querySelector('span');
+            indicatorIcon.className = modeOption.icon;
+            indicatorText.textContent = modeOption.name;
+            
+            // Mostra o indicador com animação
+            selectedModeIndicator.classList.add('show');
+            
+            // Atualiza o placeholder baseado no modo
+            const placeholders = {
+                'standard': 'Digite um padrão de frase ou deixe a IA sugerir...',
+                'conversation': 'Digite um tópico de conversa ou deixe a IA escolher...',
+                'slang': 'Digite um tema para gírias ou deixe a IA sugerir...',
+                'specific-themes': 'Digite um tema específico ou deixe a IA escolher...',
+                'conversation-phrases': 'Digite um tópico de conversação ou deixe a IA sugerir...'
+            };
+            
+            patternInput.placeholder = placeholders[mode];
+            typeText(infoBox, modeDescriptions[mode]);
+        }
+
+        // Handle generation process
+        async function handleGenerate() {
+            stopLoopingAudio(); // Para qualquer áudio em loop antes de gerar novas frases
+
+            let mode = selectedMode;
+            let input = patternInput.value.trim();
+            
+            toggleButtonState(true);
+            phrasesContainer.innerHTML = '';
+            messageBox.classList.add('hidden');
+
+            let systemPrompt, userQuery;
+
+            if (mode === 'standard') {
+                if (!input) {
+                    input = await getSuggestedPattern();
+                    patternInput.value = input;
+                }
+                const existingPhrases = await getExistingPhrases();
+                systemPrompt = "You are a language tutor. Your task is to generate exactly 10 unique English sentences that follow a user-provided pattern. For each sentence, provide its Portuguese translation. The sentences must be new and not repeat any of the provided 'existing sentences'. Focus on common verbs and daily-life situations. The output must be a JSON array of objects with the keys 'english' and 'portuguese'. The verbs should be different from each other. Do not use any introductory text or explanation, just the JSON array.";
+                userQuery = `The sentence pattern is: ${input}. Existing sentences to avoid are: ${JSON.stringify(existingPhrases)}. Generate 10 new sentences.`;
+            } else if (mode === 'conversation') {
+                if (!input) {
+                    input = await getSuggestedConversationTopic();
+                    patternInput.value = input;
+                }
+                systemPrompt = "You are a language tutor. Your task is to generate exactly 10 lines of a natural-sounding English conversation between two people. For each line, provide its Portuguese translation. The conversation should be about a single topic. The output must be a JSON array of objects with the keys 'english' and 'portuguese'. Do not use any introductory text or explanation, just the JSON array.";
+                userQuery = `Generate a conversation about the following topic: ${input}.`;
+            } else if (mode === 'slang') {
+                if (!input) {
+                    input = await getSuggestedConversationTopic();
+                    patternInput.value = input;
+                }
+                systemPrompt = "You are a language tutor specialized in modern, informal American English. Your task is to generate exactly 10 lines of a highly informal conversation between two people. The dialogue must be natural, using common American slang and idioms. Include some expletives or strong language for a line that expresses anger or frustration. Do not use any introductory text or explanation, just the JSON array with 'english' and 'portuguese' keys. Ensure the translation captures the informal tone.";
+                userQuery = `Generate an informal conversation about the following topic: ${input}.`;
+            } else if (mode === 'specific-themes') {
+                if (!input) {
+                    input = await getSuggestedSpecificTheme();
+                    patternInput.value = input;
+                }
+                systemPrompt = "You are a language tutor. Your task is to generate exactly 10 English phrases about a specific theme. The phrases should include a mix of single-person statements and short conversational exchanges between two people. For each phrase, provide its Portuguese translation. The output must be a JSON array of objects with the keys 'english' and 'portuguese'. Do not use any introductory text or explanation, just the JSON array.";
+                userQuery = `Generate phrases and short conversations about the following theme: ${input}.`;
+            } else if (mode === 'conversation-phrases') {
+                 if (!input) {
+                    input = await getSuggestedConversationQuestionTopic();
+                    patternInput.value = input;
+                }
+                systemPrompt = "You are a language tutor. Your task is to generate exactly 10 lines of a natural-sounding English conversation between two people, with a focus on common questions and answers used in daily life. For each line, provide its Portuguese translation. The output must be a JSON array of objects with the keys 'english' and 'portuguese'. Do not use any introductory text or explanation, just the JSON array. The conversation should be about a single topic.";
+                userQuery = `Generate a conversation about the following topic: ${input}.`;
+            }
+
+            try {
+                const apiKey = GEMINI_API_KEY;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "ARRAY",
+                            items: {
+                                type: "OBJECT",
+                                properties: {
+                                    "english": { "type": "STRING" },
+                                    "portuguese": { "type": "STRING" }
+                                }
+                            }
+                        }
+                    }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                const candidates = result.candidates;
+
+                if (candidates && candidates.length > 0 && candidates[0].content && candidates[0].content.parts && candidates[0].content.parts.length > 0) {
+                    const generatedText = candidates[0].content.parts[0].text;
+                    const parsedPhrases = JSON.parse(generatedText);
+                    
+                    if (parsedPhrases.length > 0) {
+                        renderPhrases(parsedPhrases);
+                        savePhrasesToLocalStorage(parsedPhrases, input);
+                    } else {
+                        showMessage("A IA não conseguiu gerar novas frases. Tente um padrão ou tópico diferente.");
+                    }
+                } else {
+                    showMessage("A IA não retornou um resultado válido.");
+                }
+
+            } catch (error) {
+                console.error("Erro ao gerar frases:", error);
+                showMessage(`Erro: ${error.message}. Tente novamente.`);
+            } finally {
+                toggleButtonState(false);
+            }
+        }
+
+        function renderPhrases(phrases) {
+            phrasesContainer.innerHTML = '';
+            phrases.forEach(phrase => {
+                const phraseCard = document.createElement('div');
+                phraseCard.className = 'phrase-card';
+                phraseCard.innerHTML = `
+                    <div class="phrase-card-content">
+                        <h3>${phrase.english} <i class="fa-regular fa-copy copy-icon cursor-pointer" data-text-to-copy="${phrase.english}"></i></h3>
+                        <p>${phrase.portuguese} <i class="fa-regular fa-copy copy-icon cursor-pointer" data-text-to-copy="${phrase.portuguese}"></i></p>
+                    </div>
+                    <div class="phrase-actions flex-wrap">
+                        <button class="action-btn play-audio-btn" data-original-text="Ouvir" data-original-icon="fas fa-volume-up">
+                            <i class="fas fa-volume-up"></i> <span>Ouvir</span>
+                        </button>
+                        <button class="speed-btn" onclick="cyclePlaybackRate()">
+                            <i class="fas fa-tachometer-alt"></i> <span id="speed-text">1.0x</span>
+                        </button>
+                    </div>
+                    <div class="phrase-corner-actions">
+                        <button class="icon-btn repeat-audio-btn" data-original-icon="fas fa-redo" title="Repetir">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <button class="icon-btn download-audio-btn" data-original-icon="fas fa-download" title="Baixar">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                `;
+                phrasesContainer.appendChild(phraseCard);
+            });
+
+            // Adiciona os event listeners após renderizar
+            document.querySelectorAll('.play-audio-btn').forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    stopLoopingAudio(); // Para qualquer loop antes de tocar
+                    playAudio(phrases[index].english, btn);
+                });
+            });
+            document.querySelectorAll('.repeat-audio-btn').forEach((btn, index) => {
+                btn.addEventListener('click', () => toggleRepeatAudio(phrases[index].english, btn));
+            });
+            document.querySelectorAll('.copy-icon').forEach(icon => {
+                icon.addEventListener('click', (e) => {
+                    const textToCopy = e.target.getAttribute('data-text-to-copy');
+                    copyTextToClipboard(textToCopy, e.target);
+                });
+            });
+            document.querySelectorAll('.download-audio-btn').forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    stopLoopingAudio(); // Para qualquer loop antes de baixar
+                    downloadAudio(phrases[index].english, btn);
+                });
+            });
+            
+            // Atualiza o texto inicial do botão de velocidade
+            updateSpeedButtonText();
+        }
+        
+        // Função para salvar frases no localStorage
+        function savePhrasesToLocalStorage(phrases, pattern) {
+            try {
+                const existingPhrases = JSON.parse(localStorage.getItem('existingPhrases') || '[]');
+                const newPhrases = phrases.map(phrase => ({ ...phrase, pattern, timestamp: Date.now() }));
+                const updatedPhrases = [...existingPhrases, ...newPhrases];
+                
+                // Manter apenas as últimas 100 frases para não sobrecarregar o localStorage
+                if (updatedPhrases.length > 100) {
+                    updatedPhrases.splice(0, updatedPhrases.length - 100);
+                }
+                
+                localStorage.setItem('existingPhrases', JSON.stringify(updatedPhrases));
+                console.log("Frases salvas no localStorage com sucesso.");
+            } catch (e) {
+                console.error("Erro ao salvar as frases no localStorage:", e);
+            }
+        }
+        
+        // Função para alternar o estado do botão (carregando/normal)
+        function toggleButtonState(isLoading) {
+            const iconElement = generateBtn.querySelector('i');
+
+            generateBtn.disabled = isLoading;
+            if (isLoading) {
+                iconElement.className = 'fas fa-spinner fa-spin';
+            } else {
+                iconElement.className = 'fa-solid fa-circle-arrow-up';
+            }
+        }
+        
+        // Função para copiar texto para a área de transferência
+        async function copyTextToClipboard(text, icon) {
+            try {
+                // Tenta usar a API moderna primeiro
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                    showCopyTooltip(icon, "Copiado!");
+                } else {
+                    // Fallback para navegadores mais antigos
+                    const tempTextarea = document.createElement('textarea');
+                    tempTextarea.value = text;
+                    tempTextarea.style.position = 'fixed';
+                    tempTextarea.style.left = '-999999px';
+                    tempTextarea.style.top = '-999999px';
+                    document.body.appendChild(tempTextarea);
+                    tempTextarea.focus();
+                    tempTextarea.select();
+                    
+                    const successful = document.execCommand('copy');
+                    document.body.removeChild(tempTextarea);
+                    
+                    if (successful) {
+                        showCopyTooltip(icon, "Copiado!");
+                    } else {
+                        throw new Error('Falha ao copiar com execCommand');
+                    }
+                }
+            } catch (err) {
+                console.error('Erro ao copiar texto:', err);
+                showCopyTooltip(icon, "Erro ao copiar");
+            }
+        }
+
+        // Função para mostrar tooltip discreto
+        function showCopyTooltip(icon, message) {
+            // Remove tooltip anterior se existir
+            const existingTooltip = document.querySelector('.copy-tooltip');
+            if (existingTooltip) {
+                existingTooltip.remove();
+            }
+
+            // Cria novo tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'copy-tooltip';
+            tooltip.textContent = message;
+            document.body.appendChild(tooltip);
+
+            // Posiciona o tooltip próximo ao ícone
+            const iconRect = icon.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            
+            // Calcula a posição considerando o scroll
+            const iconCenterX = iconRect.left + scrollLeft + (iconRect.width / 2);
+            const iconTop = iconRect.top + scrollTop;
+            
+            // Posiciona o tooltip
+            tooltip.style.position = 'absolute';
+            tooltip.style.left = (iconCenterX - 30) + 'px'; // 30px é aproximadamente metade da largura do tooltip
+            tooltip.style.top = (iconTop - 35) + 'px'; // 35px acima do ícone
+
+            // Mostra o tooltip
+            setTimeout(() => tooltip.classList.add('show'), 10);
+
+            // Remove o tooltip após 2 segundos
+            setTimeout(() => {
+                tooltip.classList.remove('show');
+                setTimeout(() => tooltip.remove(), 200);
+            }, 2000);
+
+            // Muda o ícone temporariamente
+            if (message === "Copiado!") {
+                icon.className = 'fas fa-check copy-icon';
+                setTimeout(() => {
+                    icon.className = 'fa-regular fa-copy copy-icon';
+                }, 2000);
+            }
+        }
+
+        // Função para alternar entre velocidades de reprodução
+        window.cyclePlaybackRate = function() {
+            const speeds = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0];
+            const currentIndex = speeds.indexOf(playbackRate);
+            const nextIndex = (currentIndex + 1) % speeds.length;
+            
+            playbackRate = speeds[nextIndex];
+            
+            // Atualiza o texto do botão
+            updateSpeedButtonText();
+            
+            // Adiciona efeito visual ao botão
+            const speedButtons = document.querySelectorAll('.speed-btn');
+            speedButtons.forEach(btn => {
+                btn.style.transform = 'scale(1.1)';
+                btn.style.boxShadow = '0 6px 16px rgba(139, 92, 246, 0.5)';
+                setTimeout(() => {
+                    btn.style.transform = '';
+                    btn.style.boxShadow = '';
+                }, 200);
+            });
+            
+            showMessage(`Velocidade do áudio: ${playbackRate.toFixed(2)}x`);
+
+            // Se um áudio estiver em loop, atualiza a velocidade em tempo real
+            if (currentLoopingAudio) {
+                currentLoopingAudio.playbackRate = playbackRate;
+            }
+        };
+
+        // Função para atualizar o texto do botão de velocidade
+        function updateSpeedButtonText() {
+            const speedTexts = document.querySelectorAll('#speed-text');
+            speedTexts.forEach(text => {
+                text.textContent = `${playbackRate.toFixed(2)}x`;
+            });
+        }
+
+        function toggleButtonLoading(btn, isLoading) {
+            const icon = btn.querySelector('i');
+            const originalIconClass = btn.dataset.originalIcon;
+
+            if (isLoading) {
+                icon.className = 'fas fa-spinner fa-spin';
+                btn.disabled = true;
+            } else {
+                icon.className = originalIconClass;
+                btn.disabled = false;
+            }
+        }
+
+        // Text-to-Speech (TTS) logic
+        async function playAudio(text, btn) {
+            toggleButtonLoading(btn, true);
+            try {
+                const audioUrl = await generateAudioUrl(text);
+                const audio = new Audio(audioUrl);
+                audio.playbackRate = playbackRate;
+                audio.play();
+            } catch (error) {
+                console.error("Erro ao tocar o áudio:", error);
+                showMessage("Erro ao tocar o áudio. Tente novamente.");
+            } finally {
+                toggleButtonLoading(btn, false);
+            }
+        }
+        
+        async function toggleRepeatAudio(text, btn) {
+            // Se o mesmo botão já está ativo, pare o áudio
+            if (currentLoopingButton === btn) {
+                stopLoopingAudio();
+                return;
+            }
+
+            // Se um áudio diferente está em loop, pare-o primeiro
+            if (currentLoopingAudio) {
+                stopLoopingAudio();
+            }
+
+            toggleButtonLoading(btn, true);
+            try {
+                const audioUrl = await generateAudioUrl(text);
+                const audio = new Audio(audioUrl);
+                audio.playbackRate = playbackRate;
+                
+                // Configura o loop
+                audio.addEventListener('ended', function() {
+                    this.currentTime = 0;
+                    this.play();
+                }, false);
+                
+                audio.play();
+
+                // Salva o estado atual do loop
+                currentLoopingAudio = audio;
+                currentLoopingButton = btn;
+                btn.classList.add('repeat-active');
+            } catch (error) {
+                console.error("Erro ao repetir o áudio:", error);
+                showMessage("Erro ao repetir o áudio. Tente novamente.");
+                stopLoopingAudio(); // Limpa o estado em caso de erro
+            } finally {
+                toggleButtonLoading(btn, false);
+            }
+        }
+        
+        function stopLoopingAudio() {
+            if (currentLoopingAudio) {
+                currentLoopingAudio.pause();
+                currentLoopingAudio.currentTime = 0;
+                currentLoopingAudio = null;
+            }
+            if (currentLoopingButton) {
+                currentLoopingButton.classList.remove('repeat-active');
+                currentLoopingButton = null;
+            }
+        }
+
+        async function downloadAudio(text, btn) {
+            btn.disabled = true;
+            try {
+                const audioUrl = await generateAudioUrl(text);
+                const link = document.createElement('a');
+                // Gera um nome de arquivo seguro a partir do texto da frase
+                const sanitizedFilename = text.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_').substring(0, 50).toLowerCase();
+                link.href = audioUrl;
+                link.download = sanitizedFilename + '.wav';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (error) {
+                console.error("Erro ao baixar o áudio:", error);
+                showMessage("Erro ao baixar o áudio. Tente novamente.");
+            } finally {
+                btn.disabled = false;
+            }
+        }
+        
+        // Função para alternar o modo "connected speech"
+        connectSpeechToggle.addEventListener('click', () => {
+            stopLoopingAudio();
+            isConnectedSpeechMode = !isConnectedSpeechMode;
+            if (isConnectedSpeechMode) {
+                connectSpeechToggle.classList.add('active');
+            } else {
+                connectSpeechToggle.classList.remove('active');
+            }
+        });
+
+        async function generateAudioUrl(text) {
+            const cacheKey = `${text}-${isConnectedSpeechMode ? 'connected' : 'default'}`;
+            // Verifica se o áudio já está em cache
+            if (audioCache[cacheKey]) {
+                console.log("Áudio carregado do cache.");
+                return audioCache[cacheKey];
+            }
+
+            let voiceName = "Puck"; // Voz padrão
+            let textToSynthesize = text;
+            if (isConnectedSpeechMode) {
+                // A voz "Zubenelgenubi" é mais adequada para o estilo casual
+                voiceName = "Zubenelgenubi"; 
+                // Instrução para a IA para gerar o áudio em estilo "connected speech"
+                textToSynthesize = `Say this in a fast, casual, connected speech style: ${text}`;
+            }
+
+            const apiKey = GEMINI_API_KEY;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{
+                    parts: [{ text: textToSynthesize }]
+                }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: {
+                        voiceConfig: {
+                            prebuiltVoiceConfig: { voiceName: voiceName }
+                        }
+                    }
+                },
+                model: "gemini-2.5-flash-preview-tts"
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const part = result?.candidates?.[0]?.content?.parts?.[0];
+            const audioData = part?.inlineData?.data;
+            const mimeType = part?.inlineData?.mimeType;
+
+            if (!audioData || !mimeType || !mimeType.startsWith("audio/")) {
+                throw new Error("Dados de áudio inválidos na resposta da API.");
+            }
+
+            const sampleRateMatch = mimeType.match(/rate=(\d+)/);
+            if (!sampleRateMatch) {
+                throw new Error("Não foi possível extrair a taxa de amostragem do tipo MIME.");
+            }
+            const sampleRate = parseInt(sampleRateMatch[1], 10);
+            
+            const pcmData = base64ToArrayBuffer(audioData);
+            const pcm16 = new Int16Array(pcmData);
+            const wavBlob = pcmToWav(pcm16, sampleRate);
+            const audioUrl = URL.createObjectURL(wavBlob);
+
+            // Salva o áudio no cache antes de retornar
+            audioCache[cacheKey] = audioUrl;
+
+            return audioUrl;
+        }
+
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        function pcmToWav(pcmData, sampleRate) {
+            const numChannels = 1;
+            const bytesPerSample = 2;
+            const byteRate = numChannels * sampleRate * bytesPerSample;
+            const blockAlign = numChannels * bytesPerSample;
+            const dataSize = pcmData.byteLength;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            // WAV header
+            let offset = 0;
+            // "RIFF" chunk
+            view.setUint32(offset, 0x52494646, false); offset += 4;
+            view.setUint32(offset, 36 + dataSize, true); offset += 4;
+            view.setUint32(offset, 0x57415645, false); offset += 4;
+            // "fmt " sub-chunk
+            view.setUint32(offset, 0x666d7420, false); offset += 4;
+            view.setUint32(offset, 16, true); offset += 4; // Sub-chunk size
+            view.setUint16(offset, 1, true); offset += 2; // Audio format (PCM)
+            view.setUint16(offset, numChannels, true); offset += 2; // Num channels
+            view.setUint32(offset, sampleRate, true); offset += 4; // Sample rate
+            view.setUint32(offset, byteRate, true); offset += 4; // Byte rate
+            view.setUint16(offset, blockAlign, true); offset += 2; // Block align
+            view.setUint16(offset, bytesPerSample * 8, true); offset += 2; // Bits per sample
+            // "data" sub-chunk
+            view.setUint32(offset, 0x64617461, false); offset += 4;
+            view.setUint32(offset, dataSize, true); offset += 4;
+
+            // Copy PCM data
+            const pcmView = new Uint8Array(pcmData.buffer);
+            for (let i = 0; i < dataSize; i++) {
+                view.setUint8(44 + i, pcmView[i]);
+            }
+            return new Blob([view], { type: 'audio/wav' });
+        }
+        
+        // Event listeners
+        generateBtn.addEventListener('click', handleGenerate);
+        plusBtn.addEventListener('click', toggleFloatingMenu);
+
+        // Event listeners para os itens do menu
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const mode = item.dataset.mode;
+                selectMode(mode);
+            });
+        });
+
+        // Fechar menu quando clicar fora
+        document.addEventListener('click', (e) => {
+            if (!floatingMenu.contains(e.target) && !plusBtn.contains(e.target)) {
+                floatingMenu.classList.remove('show');
+            }
+        });
+
+        // Event listener para ocultar indicador quando digitar
+        patternInput.addEventListener('input', () => {
+            if (patternInput.value.trim().length > 0) {
+                selectedModeIndicator.classList.remove('show');
+            } else {
+                selectedModeIndicator.classList.add('show');
+            }
+        });
+
+        // Função para forçar atualização do favicon
+        function forceFaviconUpdate() {
+            const favicon = document.querySelector('link[rel="icon"]');
+            if (favicon) {
+                const timestamp = Date.now();
+                const currentHref = favicon.href;
+                // Adiciona timestamp para quebrar o cache
+                favicon.href = currentHref + '?v=' + timestamp;
+                
+                // Força o navegador a recarregar o favicon
+                setTimeout(() => {
+                    favicon.href = currentHref;
+                }, 100);
+            }
+        }
+
+        // Initial setup on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeApp();
+            
+            // Força atualização do favicon
+            forceFaviconUpdate();
+            
+            // Define o texto inicial da infoBox com animação
+            typeText(infoBox, modeDescriptions[selectedMode]);
+            patternInput.placeholder = 'Digite um padrão de frase ou deixe a IA sugerir...';
+            // Mostra o indicador inicial
+            selectedModeIndicator.classList.add('show');
+            // Marca o modo padrão como ativo no menu
+            const defaultItem = document.querySelector(`[data-mode="${selectedMode}"]`);
+            if (defaultItem) {
+                defaultItem.classList.add('active');
+                const checkIcon = defaultItem.querySelector('.active-check');
+                if (checkIcon) {
+                    checkIcon.style.display = 'inline-block';
+                }
+            }
+            
+            // Define uma descrição aleatória do site
+            setRandomDescription();
+        });
+    </script>
+
+</body>
+</html>
