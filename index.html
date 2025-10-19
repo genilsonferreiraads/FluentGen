@@ -442,15 +442,22 @@
                 margin-bottom: 0.5rem;
             }
             
+            .phrase-text-container:last-child {
+                padding-bottom: 1.25rem; /* Reduzido drasticamente para eliminar espaço excessivo */
+            }
+            
             .phrase-card-content h3 {
                 font-size: 1rem;
-                margin-bottom: 0.5rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                line-height: 1.3;
             }
             
             .phrase-card-content p {
                 font-size: 0.85rem;
-                margin-bottom: 1rem;
-                padding-bottom: 1.25rem; /* Reduzido drasticamente para eliminar espaço excessivo */
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                line-height: 1.3;
             }
             
             .phrase-actions {
@@ -493,15 +500,22 @@
                 margin-bottom: 0.5rem;
             }
             
+            .phrase-text-container:last-child {
+                padding-bottom: 0.5rem;
+            }
+            
             .phrase-card-content h3 {
                 font-size: 0.95rem;
-                margin-bottom: 0.5rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                line-height: 1.3;
             }
             
             .phrase-card-content p {
                 font-size: 0.8rem;
-                margin-bottom: 0.75rem;
-                padding-bottom: 0.5rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                line-height: 1.3;
             }
             
             .phrase-actions {
@@ -542,27 +556,40 @@
             display: flex;
             gap: 0.375rem;
         }
-        .phrase-card-content h3, .phrase-card-content p {
+        .phrase-text-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .phrase-text-container:last-child {
+            margin-bottom: 1rem;
+            padding-bottom: 2.5rem; /* Espaço para os ícones na parte inferior */
+        }
+        .phrase-card-content h3, .phrase-card-content p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            margin: 0;
+            flex: 1;
         }
         .phrase-card-content h3 {
             font-weight: 700;
             font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+            line-height: 1.4;
         }
         .phrase-card-content p {
             font-style: italic;
             color: #8b949e;
-            margin-bottom: 1rem;
-            padding-bottom: 2.5rem; /* Espaço para os ícones na parte inferior */
+            line-height: 1.4;
         }
         .copy-icon {
             color: #4b5563;
             cursor: pointer;
             font-size: 0.8em;
             transition: color 0.2s ease-in-out;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
         }
         .copy-icon:hover {
             color: #c9d1d9;
@@ -1127,6 +1154,52 @@
                 transform: translateX(1.25rem);
             }
         }
+
+        /* Rodapé */
+        .site-footer {
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            border-top: 1px solid #30363d;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .footer-content p:first-child {
+            font-size: 1rem;
+            color: #c9d1d9;
+        }
+
+        .footer-content strong {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        .footer-subtitle {
+            font-size: 0.8rem !important;
+            color: #6e7681 !important;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .site-footer {
+                padding: 1.5rem 1rem;
+                margin-top: 2rem;
+            }
+            
+            .footer-content p:first-child {
+                font-size: 0.9rem;
+            }
+            
+            .footer-subtitle {
+                font-size: 0.75rem !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1236,6 +1309,8 @@
         const inFlightAudioPromises = {};
         const ttsQueue = [];
         let isTtsProcessing = false;
+        let lastRequestTime = 0;
+        let consecutiveErrors = 0;
 
         // Estado do áudio em loop
         let currentLoopingAudio = null;
@@ -1597,8 +1672,14 @@
 
                 phraseCard.innerHTML = `
                     <div class="phrase-card-content">
-                        <h3>${englishSentence} <i class="fa-regular fa-copy copy-icon cursor-pointer" data-text-to-copy="${phrase.english}"></i></h3>
-                        <p>${phrase.portuguese} <i class="fa-regular fa-copy copy-icon cursor-pointer" data-text-to-copy="${phrase.portuguese}"></i></p>
+                        <div class="phrase-text-container">
+                            <h3>${englishSentence}</h3>
+                            <i class="fa-regular fa-copy copy-icon cursor-pointer" data-text-to-copy="${phrase.english}"></i>
+                        </div>
+                        <div class="phrase-text-container">
+                            <p>${phrase.portuguese}</p>
+                            <i class="fa-regular fa-copy copy-icon cursor-pointer" data-text-to-copy="${phrase.portuguese}"></i>
+                        </div>
                     </div>
                     <div class="phrase-actions flex-wrap">
                         <button class="action-btn play-audio-btn" data-original-text="Ouvir" data-original-icon="fas fa-volume-up">
@@ -1665,7 +1746,7 @@
         let lastWordClickTs = 0;
         async function playWordAudio(text) {
             const now = Date.now();
-            if (now - lastWordClickTs < 250) return; // debounce 250ms
+            if (now - lastWordClickTs < 500) return; // Aumentar debounce para 500ms
             lastWordClickTs = now;
             try {
                 const audioUrl = await getAudioUrlThrottled(text);
@@ -1674,7 +1755,11 @@
                 audio.play();
             } catch (error) {
                 console.error('Erro ao tocar palavra:', error);
-                showMessage('Muitas solicitações de áudio. Aguarde um instante e tente novamente.');
+                if (error.message.includes('429')) {
+                    showMessage('Muitas solicitações de áudio. Aguarde alguns segundos e tente novamente.');
+                } else {
+                    showMessage('Erro ao reproduzir áudio. Tente novamente em alguns segundos.');
+                }
             }
         }
         
@@ -1757,7 +1842,11 @@
                 audio.onended = () => toggleButtonLoading(btn, false);
             } catch (error) {
                 console.error("Erro ao tocar áudio:", error);
-                showMessage("Erro ao tocar o áudio.");
+                if (error.message.includes('429')) {
+                    showMessage("Muitas solicitações de áudio. Aguarde alguns segundos e tente novamente.");
+                } else {
+                    showMessage("Erro ao tocar o áudio. Tente novamente em alguns segundos.");
+                }
                 toggleButtonLoading(btn, false);
             }
         }
@@ -1781,7 +1870,11 @@
                 btn.classList.add('repeat-active');
             } catch (error) {
                 console.error("Erro ao repetir áudio:", error);
-                showMessage("Erro ao repetir o áudio.");
+                if (error.message.includes('429')) {
+                    showMessage("Muitas solicitações de áudio. Aguarde alguns segundos e tente novamente.");
+                } else {
+                    showMessage("Erro ao repetir o áudio. Tente novamente em alguns segundos.");
+                }
                 stopLoopingAudio();
             } finally {
                 toggleButtonLoading(btn, false);
@@ -1813,7 +1906,11 @@
                 document.body.removeChild(link);
             } catch (error) {
                 console.error("Erro ao baixar áudio:", error);
-                showMessage("Erro ao baixar o áudio.");
+                if (error.message.includes('429')) {
+                    showMessage("Muitas solicitações de áudio. Aguarde alguns segundos e tente novamente.");
+                } else {
+                    showMessage("Erro ao baixar o áudio. Tente novamente em alguns segundos.");
+                }
             } finally {
                 toggleButtonLoading(btn, false);
             }
@@ -1865,7 +1962,7 @@
 
         function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
 
-        async function generateAudioUrlWithRetry(text, attempts = 2) {
+        async function generateAudioUrlWithRetry(text, attempts = 3) {
             let lastError;
             for (let i = 0; i <= attempts; i++) {
                 try {
@@ -1873,7 +1970,10 @@
                 } catch (e) {
                     lastError = e;
                     if (i === attempts) break;
-                    await sleep(800 * (i + 1));
+                    // Backoff exponencial mais agressivo: 1s, 3s, 6s
+                    const delay = Math.min(1000 * Math.pow(2, i), 6000);
+                    console.log(`Tentativa ${i + 1} falhou, aguardando ${delay}ms...`);
+                    await sleep(delay);
                 }
             }
             throw lastError;
@@ -1895,13 +1995,20 @@
             try {
                 while (ttsQueue.length) {
                     const { cacheKey, text, resolve, reject } = ttsQueue.shift();
-                    if (audioCache[cacheKey]) { resolve(audioCache[cacheKey]); continue; }
+                    if (audioCache[cacheKey]) { 
+                        resolve(audioCache[cacheKey]); 
+                        continue; 
+                    }
                     if (!inFlightAudioPromises[cacheKey]) {
                         inFlightAudioPromises[cacheKey] = (async () => {
                             try {
-                                const url = await generateAudioUrlWithRetry(text, 2);
+                                const url = await generateAudioUrlWithRetry(text, 3);
                                 audioCache[cacheKey] = url;
+                                consecutiveErrors = 0; // Reset contador de erros
                                 return url;
+                            } catch (e) {
+                                consecutiveErrors++;
+                                throw e;
                             } finally {
                                 delete inFlightAudioPromises[cacheKey];
                             }
@@ -1913,8 +2020,19 @@
                     } catch (e) {
                         reject(e);
                     }
-                    // Espaçar chamadas para evitar 429
-                    await sleep(700);
+                    
+                    // Espaçamento dinâmico baseado em erros consecutivos
+                    const baseDelay = 1500;
+                    const errorMultiplier = Math.min(consecutiveErrors * 0.5, 3); // Max 3x delay
+                    const dynamicDelay = baseDelay + (baseDelay * errorMultiplier);
+                    
+                    // Garantir mínimo de 2s entre requisições
+                    const timeSinceLastRequest = Date.now() - lastRequestTime;
+                    const remainingDelay = Math.max(dynamicDelay - timeSinceLastRequest, 2000);
+                    
+                    console.log(`Aguardando ${remainingDelay}ms antes da próxima requisição...`);
+                    await sleep(remainingDelay);
+                    lastRequestTime = Date.now();
                 }
             } finally {
                 isTtsProcessing = false;
@@ -2025,6 +2143,14 @@
             setRandomDescription();
         });
     </script>
+
+    <!-- Rodapé -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Criado com ❤️ por <strong>Genilson Ferreira</strong></p>
+            <p class="footer-subtitle">Desenvolvedor Full Stack & Entusiasta de IA</p>
+        </div>
+    </footer>
 
 </body>
 </html>
