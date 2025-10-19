@@ -1700,9 +1700,7 @@
                 `;
                 phrasesContainer.appendChild(phraseCard);
 
-                // Envolver as palavras em spans clicáveis para tocar áudio por palavra
-                const titleEl = phraseCard.querySelector('h3');
-                if (titleEl) wrapWordsForAudio(titleEl);
+                // Removido: reprodução por palavra para reduzir carga da API
             });
 
             document.querySelectorAll('.play-audio-btn').forEach((btn, index) => btn.addEventListener('click', () => { stopLoopingAudio(); playAudio(phrases[index].english, btn); }));
@@ -1713,55 +1711,7 @@
             updateSpeedButtonText();
         }
 
-        function wrapWordsForAudio(rootElement) {
-            const wordRegex = /(\b[\w']+\b)/g; // palavras (inclui apóstrofos em contrações)
-            const walker = document.createTreeWalker(rootElement, NodeFilter.SHOW_TEXT, null);
-            const textNodes = [];
-            while (walker.nextNode()) {
-                const node = walker.currentNode;
-                // Ignorar nós de texto vazios/espacos
-                if (!node.nodeValue || !node.nodeValue.trim()) continue;
-                textNodes.push(node);
-            }
-            textNodes.forEach(textNode => {
-                const parts = textNode.nodeValue.split(wordRegex);
-                const fragment = document.createDocumentFragment();
-                for (let i = 0; i < parts.length; i++) {
-                    const part = parts[i];
-                    if (!part) continue;
-                    if (wordRegex.test(part)) {
-                        const span = document.createElement('span');
-                        span.className = 'word-audio cursor-pointer';
-                        span.dataset.word = part;
-                        span.textContent = part;
-                        fragment.appendChild(span);
-                    } else {
-                        fragment.appendChild(document.createTextNode(part));
-                    }
-                }
-                textNode.parentNode.replaceChild(fragment, textNode);
-            });
-        }
-
-        let lastWordClickTs = 0;
-        async function playWordAudio(text) {
-            const now = Date.now();
-            if (now - lastWordClickTs < 500) return; // Aumentar debounce para 500ms
-            lastWordClickTs = now;
-            try {
-                const audioUrl = await getAudioUrlThrottled(text);
-                const audio = new Audio(audioUrl);
-                audio.playbackRate = playbackRate;
-                audio.play();
-            } catch (error) {
-                console.error('Erro ao tocar palavra:', error);
-                if (error.message.includes('429')) {
-                    showMessage('Muitas solicitações de áudio. Aguarde alguns segundos e tente novamente.');
-                } else {
-                    showMessage('Erro ao reproduzir áudio. Tente novamente em alguns segundos.');
-                }
-            }
-        }
+        // Funções de reprodução por palavra removidas para reduzir carga da API
         
         function savePhrasesToLocalStorage(phrases, pattern) {
             try {
@@ -1841,7 +1791,6 @@
                 audio.play();
                 audio.onended = () => toggleButtonLoading(btn, false);
             } catch (error) {
-                console.error("Erro ao tocar áudio:", error);
                 if (error.message.includes('429')) {
                     showMessage("Muitas solicitações de áudio. Aguarde alguns segundos e tente novamente.");
                 } else {
@@ -1869,7 +1818,6 @@
                 currentLoopingButton = btn;
                 btn.classList.add('repeat-active');
             } catch (error) {
-                console.error("Erro ao repetir áudio:", error);
                 if (error.message.includes('429')) {
                     showMessage("Muitas solicitações de áudio. Aguarde alguns segundos e tente novamente.");
                 } else {
@@ -1905,7 +1853,6 @@
                 link.click();
                 document.body.removeChild(link);
             } catch (error) {
-                console.error("Erro ao baixar áudio:", error);
                 if (error.message.includes('429')) {
                     showMessage("Muitas solicitações de áudio. Aguarde alguns segundos e tente novamente.");
                 } else {
@@ -1972,7 +1919,6 @@
                     if (i === attempts) break;
                     // Backoff exponencial mais agressivo: 1s, 3s, 6s
                     const delay = Math.min(1000 * Math.pow(2, i), 6000);
-                    console.log(`Tentativa ${i + 1} falhou, aguardando ${delay}ms...`);
                     await sleep(delay);
                 }
             }
@@ -2030,7 +1976,6 @@
                     const timeSinceLastRequest = Date.now() - lastRequestTime;
                     const remainingDelay = Math.max(dynamicDelay - timeSinceLastRequest, 2000);
                     
-                    console.log(`Aguardando ${remainingDelay}ms antes da próxima requisição...`);
                     await sleep(remainingDelay);
                     lastRequestTime = Date.now();
                 }
@@ -2111,12 +2056,6 @@
         window.addEventListener('resize', () => autoResizeTextarea(patternInput));
 
         phrasesContainer.addEventListener('click', (e) => {
-            const wordTarget = e.target.closest('.word-audio');
-            if (wordTarget) {
-                stopLoopingAudio();
-                playWordAudio(wordTarget.dataset.word);
-                return;
-            }
             const highlightTarget = e.target.closest('.highlightable');
             if (highlightTarget) {
                 const { highlight, type, explanation } = highlightTarget.dataset;
